@@ -19,15 +19,6 @@ export const communityStats = {
 
 export const quickLinks: QuickLink[] = [
   {
-    icon: "chat",
-    title: "WhatsApp Hub",
-    description:
-      "Join the real-time conversation for street-level updates and quick neighborly help in Sutton Fields.",
-    ctaLabel: "Connect Now",
-    ctaHref: "#",
-    variant: "default",
-  },
-  {
     icon: "groups",
     title: "Facebook Group",
     description:

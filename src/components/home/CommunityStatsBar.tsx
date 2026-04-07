@@ -2,11 +2,11 @@ import { communityStats } from "@/data/home";
 
 export function CommunityStatsBar() {
   const stats = [
-    { value: communityStats.totalHomes, label: "Homes" },
-    { value: communityStats.hoaDues, label: "HOA Dues" },
-    { value: communityStats.schoolDistrict, label: "School District" },
-    { value: communityStats.pools, label: "Pools" },
-    { value: communityStats.trails, label: "of Trails" },
+    { value: communityStats.totalHomes, label: "Homes", note: null },
+    { value: communityStats.hoaDues, label: "HOA Dues", note: "Soon to be $660/yr" },
+    { value: communityStats.schoolDistrict, label: "School District", note: null },
+    { value: communityStats.pools, label: "Pools", note: null },
+    { value: communityStats.trails, label: "of Trails", note: null },
   ];
 
   return (
@@ -20,6 +20,11 @@ export function CommunityStatsBar() {
             <div className="text-xs uppercase tracking-widest font-bold text-on-surface-variant mt-1">
               {stat.label}
             </div>
+            {stat.note && (
+              <div className="text-[10px] text-tertiary font-semibold mt-1">
+                {stat.note}
+              </div>
+            )}
           </div>
         ))}
       </div>

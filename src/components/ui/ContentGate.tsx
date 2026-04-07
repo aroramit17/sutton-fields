@@ -1,5 +1,6 @@
 "use client";
 
+import { useAuth } from "@/context/AuthContext";
 import { Icon } from "./Icon";
 import { Button } from "./Button";
 
@@ -9,10 +10,16 @@ interface ContentGateProps {
   children?: React.ReactNode;
 }
 
-export function ContentGate({ title, description }: ContentGateProps) {
-  // Future: check auth state and render children if logged in
-  // const { user } = useSession();
-  // if (user) return <>{children}</>;
+export function ContentGate({ title, description, children }: ContentGateProps) {
+  const { user, profile, loading } = useAuth();
+
+  if (loading) {
+    return <div className="bg-surface-container-low rounded-3xl p-12 animate-pulse" />;
+  }
+
+  if (user && profile?.is_approved) {
+    return <>{children}</>;
+  }
 
   return (
     <div className="bg-surface-container-low rounded-3xl p-8 md:p-12 text-center">

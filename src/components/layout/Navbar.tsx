@@ -23,11 +23,29 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => {
-            const isActive = link.href === "/"
-              ? pathname === "/"
-              : pathname.startsWith(link.href);
+            const isActive =
+              !link.external &&
+              (link.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(link.href));
+
+            if (link.external) {
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-body text-sm tracking-wide text-on-surface-variant hover:text-primary-container transition-colors duration-300 flex items-center gap-1"
+                >
+                  {link.label}
+                  <Icon name="open_in_new" className="!text-xs" />
+                </a>
+              );
+            }
+
             return (
               <Link
                 key={link.href}
@@ -45,13 +63,13 @@ export function Navbar() {
           })}
         </div>
 
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-4">
           <AuthButtons />
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-on-surface-variant"
+          className="lg:hidden text-on-surface-variant"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           <Icon name={mobileOpen ? "close" : "menu"} />
@@ -60,12 +78,31 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-surface-container-lowest/95 backdrop-blur-md px-8 pb-6">
+        <div className="lg:hidden bg-surface-container-lowest/95 backdrop-blur-md px-8 pb-6">
           <div className="flex flex-col gap-4">
             {navLinks.map((link) => {
-              const isActive = link.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(link.href);
+              const isActive =
+                !link.external &&
+                (link.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(link.href));
+
+              if (link.external) {
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileOpen(false)}
+                    className="font-body text-sm py-2 text-on-surface-variant flex items-center gap-1"
+                  >
+                    {link.label}
+                    <Icon name="open_in_new" className="!text-xs" />
+                  </a>
+                );
+              }
+
               return (
                 <Link
                   key={link.href}

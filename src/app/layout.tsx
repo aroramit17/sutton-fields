@@ -3,6 +3,7 @@ import { Newsreader, Manrope } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { CommunityStructuredData, HOAStructuredData } from "@/components/seo/StructuredData";
+import { AuthProvider } from "@/context/AuthContext";
 import "./globals.css";
 
 const newsreader = Newsreader({
@@ -86,9 +87,11 @@ export default function RootLayout({
         <HOAStructuredData />
       </head>
       <body className="min-h-screen flex flex-col">
-        <Navbar />
-        <main className="pt-24 flex-grow">{children}</main>
-        <Footer />
+        <AuthProvider>
+          <Navbar />
+          <main className="pt-24 flex-grow">{children}</main>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
