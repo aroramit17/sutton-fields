@@ -4,7 +4,7 @@ import { useState } from "react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { VendorSearch } from "@/components/vendors/VendorSearch";
 import { VendorGrid } from "@/components/vendors/VendorGrid";
-import { vendors } from "@/data/vendors";
+import { vendors, vendorPageContent } from "@/data/vendors";
 
 export default function VendorsPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -23,9 +23,9 @@ export default function VendorsPage() {
   return (
     <div className="pb-24 px-6 max-w-7xl mx-auto">
       <PageHeader
-        label="Neighborhood Directory"
-        title="Trusted local experts for your home."
-        description="Connect with community-vetted vendors. From weekend landscapers to trusted sitters, find the help you need right here in the neighborhood."
+        label={vendorPageContent.label}
+        title={vendorPageContent.title}
+        description={vendorPageContent.description}
         ctaLabel="Submit a Vendor"
         ctaIcon="add_circle"
         ctaHref="/vendors/submit"
