@@ -5,7 +5,22 @@ export interface Profile {
   email: string;
   address: string;
   is_approved: boolean;
+  is_admin: boolean;
   created_at: string;
+}
+
+export interface Article {
+  id: string;
+  title: string;
+  summary: string;
+  source_url: string;
+  source_title: string | null;
+  image_url: string | null;
+  category: string;
+  is_published: boolean;
+  published_at: string | null;
+  created_at: string;
+  created_by: string | null;
 }
 
 export interface Listing {
