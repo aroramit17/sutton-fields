@@ -40,3 +40,38 @@ export interface Listing {
 export interface ListingWithProfile extends Listing {
   profiles: Pick<Profile, "first_name" | "last_name"> | null;
 }
+
+export interface LostFoundPost {
+  id: string;
+  user_id: string;
+  status: "lost" | "found";
+  title: string;
+  description: string;
+  location: string;
+  images: string[];
+  is_active: boolean;
+  created_at: string;
+  expires_at: string;
+  deactivated_at: string | null;
+}
+
+export interface LostFoundPostWithProfile extends LostFoundPost {
+  profiles: Pick<Profile, "first_name" | "last_name"> | null;
+}
+
+export interface CarpoolPost {
+  id: string;
+  user_id: string;
+  title: string;
+  description: string;
+  destination: string;
+  schedule: string;
+  is_active: boolean;
+  created_at: string;
+  expires_at: string;
+  deactivated_at: string | null;
+}
+
+export interface CarpoolPostWithProfile extends CarpoolPost {
+  profiles: Pick<Profile, "first_name" | "last_name"> | null;
+}
