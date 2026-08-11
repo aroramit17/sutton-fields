@@ -3,8 +3,15 @@ import type { Vendor } from "@/types";
 export const vendorCategories = [
   "All",
   "Home Services",
+  "Irrigation & Sprinkler",
+  "HVAC",
+  "Plumbing",
+  "Electrical",
+  "Flooring & Concrete",
+  "Lightning Protection",
   "Food & Dining",
   "Babysitting",
+  "Tutoring & Lessons",
   "Pet Care",
 ];
 
