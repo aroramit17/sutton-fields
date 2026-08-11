@@ -2,7 +2,7 @@ import "server-only";
 import OpenAI from "openai";
 import { getDb } from "@/db";
 import { events, wilson_weekly_processed } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { and, eq, gte, lt, sql } from "drizzle-orm";
 
 const AGENTMAIL_BASE = "https://api.agentmail.to/v0";
 const TEXT_MODEL = "gpt-5.6-luna";
@@ -250,10 +250,29 @@ export async function scanWilsonWeeklyInbox(): Promise<{
         );
         continue;
       }
+      // Successive weekly newsletters often restate the same key dates
+      // (e.g. "First Day of School" shows up in back-to-back issues) — this
+      // catches duplicates across emails, not just within one email's batch.
+      const dayStart = new Date(Date.UTC(parsedDate.getUTCFullYear(), parsedDate.getUTCMonth(), parsedDate.getUTCDate()));
+      const dayEnd = new Date(dayStart.getTime() + 24 * 60 * 60 * 1000);
+      const alreadyExists = await db
+        .select({ id: events.id })
+        .from(events)
+        .where(
+          and(
+            eq(sql`lower(${events.title})`, e.title.toLowerCase().trim()),
+            gte(events.event_date, dayStart),
+            lt(events.event_date, dayEnd)
+          )
+        )
+        .limit(1);
+      if (alreadyExists.length > 0) continue;
+
       await db.insert(events).values({
         title: e.title,
         description: e.description,
         event_date: parsedDate,
+        has_time: false,
         location: e.location || null,
         is_published: true,
         source: "wilson_weekly",

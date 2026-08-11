@@ -95,6 +95,9 @@ export const events = pgTable("events", {
   title: text("title").notNull(),
   description: text("description").notNull(),
   event_date: timestamp("event_date", { withTimezone: true }).notNull(),
+  // Wilson Weekly extraction only ever produces a date, never a real time —
+  // without this flag the UI showed a misleading "12:00 AM" for every one.
+  has_time: boolean("has_time").notNull().default(true),
   location: text("location"),
   image_url: text("image_url"),
   is_published: boolean("is_published").notNull().default(true),

@@ -44,8 +44,12 @@ export async function WeekEventList() {
             <div className="flex flex-col items-end shrink-0">
               <span className="text-sm text-on-surface-variant">
                 {date.toLocaleDateString("en-US", { month: "short", day: "numeric" })}
-                {" • "}
-                {date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}
+                {event.has_time && (
+                  <>
+                    {" • "}
+                    {date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}
+                  </>
+                )}
                 {event.location ? ` • ${event.location}` : ""}
               </span>
               {event.source === "wilson_weekly" && (

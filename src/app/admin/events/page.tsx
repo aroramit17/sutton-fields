@@ -171,10 +171,15 @@ export default function AdminEventsPage() {
                   </span>
                 )}
                 <span className="text-xs text-on-surface-variant">
-                  {new Date(event.event_date).toLocaleString("en-US", {
-                    dateStyle: "medium",
-                    timeStyle: "short",
-                  })}
+                  {event.has_time
+                    ? new Date(event.event_date).toLocaleString("en-US", {
+                        dateStyle: "medium",
+                        timeStyle: "short",
+                      })
+                    : new Date(event.event_date).toLocaleDateString("en-US", {
+                        dateStyle: "medium",
+                        timeZone: "UTC",
+                      })}
                 </span>
               </div>
               <h3 className="font-headline text-lg text-on-surface mb-1">

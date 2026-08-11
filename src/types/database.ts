@@ -91,6 +91,7 @@ export interface DbEvent {
   title: string;
   description: string;
   event_date: string;
+  has_time: boolean;
   location: string | null;
   image_url: string | null;
   is_published: boolean;
