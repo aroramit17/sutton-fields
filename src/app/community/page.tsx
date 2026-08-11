@@ -71,7 +71,9 @@ export default function CommunityPage() {
         />
       </div>
       <AboutSection />
-      <SchoolInfo />
+      <div id="schools">
+        <SchoolInfo />
+      </div>
       <AmenitiesGrid />
       <NearbyAttractions />
       <UtilityGuide />

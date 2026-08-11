@@ -2,12 +2,10 @@ import type { NavLink } from "@/types";
 
 export const navLinks: NavLink[] = [
   { label: "Home", href: "/" },
-  { label: "Community", href: "/community" },
-  { label: "Vendors", href: "/vendors" },
-  { label: "Events", href: "/events" },
-  { label: "News", href: "/news" },
-  { label: "Buy/Sell/Trade", href: "/buy-sell-trade" },
-  { label: "Facebook", href: "https://www.facebook.com/groups/suttonfields/", external: true },
+  { label: "Live Here", href: "/live-here" },
+  { label: "Get Help", href: "/get-help" },
+  { label: "Stay Informed", href: "/stay-informed" },
+  { label: "Connect", href: "/connect" },
 ];
 
 export const footerLinks: NavLink[] = [
