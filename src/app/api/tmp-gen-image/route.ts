@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import OpenAI from "openai";
 import { put } from "@vercel/blob";
 
+export const maxDuration = 60;
+
 export async function GET() {
   const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY! });
   const response = await openai.images.generate({
