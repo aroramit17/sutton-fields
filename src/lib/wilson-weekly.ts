@@ -44,7 +44,10 @@ async function listWilsonWeeklyMessages(inboxId: string): Promise<AgentMailMessa
   url.searchParams.set("limit", "20");
 
   const res = await fetch(url, { headers: agentMailHeaders() });
-  if (!res.ok) throw new Error(`AgentMail list messages failed: ${res.status}`);
+  if (!res.ok) {
+    const body = await res.text().catch(() => "");
+    throw new Error(`AgentMail list messages failed: ${res.status} ${body}`);
+  }
   const body = await res.json();
   return body.messages ?? [];
 }
@@ -52,7 +55,10 @@ async function listWilsonWeeklyMessages(inboxId: string): Promise<AgentMailMessa
 async function getMessage(inboxId: string, messageId: string): Promise<AgentMailMessage> {
   const url = `${AGENTMAIL_BASE}/inboxes/${encodeURIComponent(inboxId)}/messages/${encodeURIComponent(messageId)}`;
   const res = await fetch(url, { headers: agentMailHeaders() });
-  if (!res.ok) throw new Error(`AgentMail get message failed: ${res.status}`);
+  if (!res.ok) {
+    const body = await res.text().catch(() => "");
+    throw new Error(`AgentMail get message failed: ${res.status} ${body}`);
+  }
   return res.json();
 }
 
