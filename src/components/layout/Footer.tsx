@@ -78,7 +78,7 @@ export function Footer() {
             <h4 className="font-bold text-sm text-on-surface mb-4">Connect</h4>
             <div className="flex gap-3">
               <a
-                href="https://www.facebook.com/groups/suttonfields/"
+                href="https://www.facebook.com/groups/suttonfields"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-on-primary transition-all"

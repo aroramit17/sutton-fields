@@ -7,9 +7,9 @@ export interface NewcomerStep {
 export const newcomerSteps: NewcomerStep[] = [
   {
     icon: "groups",
-    title: "Join the community WhatsApp group",
+    title: "Join the community Facebook group",
     description:
-      "Ask any neighbor for an invite, or check the Connect page for the current group links, including school- and grade-specific sub-groups.",
+      "Ask any neighbor for a WhatsApp invite, and join the neighborhood Facebook group from the Connect page for community discussion and announcements.",
   },
   {
     icon: "how_to_reg",
@@ -27,7 +27,7 @@ export const newcomerSteps: NewcomerStep[] = [
     icon: "school",
     title: "Get connected with your school",
     description:
-      "Dan Christie Elementary sits inside the community; Rushing Middle and Prosper High are a short drive. See Live Here > Schools, and ask in Connect for your grade's carpool or parent group.",
+      "Dan Christie Elementary sits inside the community; Rushing Middle and Prosper High are a short drive. See Live Here > Schools, and ask in the Facebook group or your neighborhood WhatsApp for your grade's carpool or parent group.",
   },
   {
     icon: "storefront",
