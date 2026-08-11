@@ -3,7 +3,6 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { QuickLinks } from "@/components/home/QuickLinks";
 import { NewsGrid } from "@/components/home/NewsGrid";
 import { NeighborSpotlight } from "@/components/home/NeighborSpotlight";
-import { NewsletterSignup } from "@/components/home/NewsletterSignup";
 import { CommunityStatsBar } from "@/components/home/CommunityStatsBar";
 import { FAQStructuredData } from "@/components/seo/StructuredData";
 
@@ -13,6 +12,11 @@ export const metadata: Metadata = {
     "Sutton Fields is a 2,289-home master-planned community in Celina, Texas by Centurion American. Features resort-style pools, 3+ miles of walking trails, community garden, pocket farms, and top-rated Prosper ISD schools including Dan Christie Elementary. HOA dues $550/year.",
   alternates: { canonical: "https://suttonfields.info" },
 };
+
+// NewsGrid pulls live articles from the DB — without this the homepage
+// would statically bake in whatever was published at build time and never
+// pick up new articles until the next deploy.
+export const revalidate = 900;
 
 const homeFaqs = [
   {
@@ -56,7 +60,6 @@ export default function HomePage() {
       <QuickLinks />
       <NewsGrid />
       <NeighborSpotlight />
-      <NewsletterSignup />
     </>
   );
 }

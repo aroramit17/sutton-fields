@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { scanWilsonWeeklyInbox } from "@/lib/wilson-weekly";
 
-// Scheduled via vercel.json — daily, the max frequency on the Vercel Hobby
-// plan. Idempotent: wilson_weekly_processed tracks which AgentMail messages
-// have already been scanned, so re-running this on the same email is a no-op.
+// Standalone route kept for manual/debug triggering — the scheduled Vercel
+// Cron entry hits /api/cron/nightly instead (see that route for why).
+// Idempotent: wilson_weekly_processed tracks which AgentMail messages have
+// already been scanned, so re-running this on the same email is a no-op.
 export async function GET(request: NextRequest) {
   if (process.env.CRON_SECRET) {
     const authHeader = request.headers.get("authorization");

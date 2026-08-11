@@ -1,11 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { newsItems } from "@/data/home";
+import { getPublishedArticles } from "@/actions/articles";
 import { Badge } from "@/components/ui/Badge";
 
-export function NewsGrid() {
-  const featured = newsItems.find((item) => item.featured);
-  const secondary = newsItems.filter((item) => !item.featured);
+export async function NewsGrid() {
+  const articles = await getPublishedArticles();
+  const featured = articles[0];
+  const secondary = articles.slice(1, 4);
+
+  if (!featured) {
+    return null;
+  }
 
   return (
     <section className="max-w-7xl mx-auto px-8 mb-24">
@@ -19,7 +24,7 @@ export function NewsGrid() {
           </h2>
         </div>
         <Link
-          href="#"
+          href="/news"
           className="text-primary font-semibold border-b-2 border-primary/20 hover:border-primary transition-all pb-1 hidden md:block"
         >
           View all updates
@@ -28,12 +33,12 @@ export function NewsGrid() {
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
         {/* Featured News */}
-        {featured && (
-          <div className="md:col-span-7 group">
+        <Link href="/news" className="md:col-span-7 group">
+          {featured.image_url && (
             <div className="relative aspect-[16/10] rounded-[2rem] overflow-hidden mb-6">
               <Image
-                src={featured.image}
-                alt={featured.imageAlt}
+                src={featured.image_url}
+                alt={featured.title}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
@@ -41,39 +46,45 @@ export function NewsGrid() {
                 <Badge variant="featured">{featured.category}</Badge>
               </div>
             </div>
-            <h3 className="text-3xl font-headline mb-3 leading-tight group-hover:text-primary transition-colors">
-              {featured.title}
-            </h3>
-            <p className="text-on-surface-variant font-light leading-relaxed max-w-2xl">
-              {featured.excerpt}
-            </p>
-          </div>
-        )}
+          )}
+          <h3 className="text-3xl font-headline mb-3 leading-tight group-hover:text-primary transition-colors">
+            {featured.title}
+          </h3>
+          <p className="text-on-surface-variant font-light leading-relaxed max-w-2xl">
+            {featured.summary}
+          </p>
+        </Link>
 
         {/* Secondary News */}
         <div className="md:col-span-5 flex flex-col gap-10">
-          {secondary.map((item) => (
-            <div key={item.title} className="flex gap-6 group cursor-pointer">
-              <div className="shrink-0 w-32 h-32 rounded-2xl overflow-hidden relative">
-                <Image
-                  src={item.image}
-                  alt={item.imageAlt}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
+          {secondary.map((article) => (
+            <Link
+              href="/news"
+              key={article.id}
+              className="flex gap-6 group"
+            >
+              {article.image_url && (
+                <div className="shrink-0 w-32 h-32 rounded-2xl overflow-hidden relative">
+                  <Image
+                    src={article.image_url}
+                    alt={article.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+              )}
               <div>
                 <span className="text-tertiary text-xs font-bold mb-2 block uppercase">
-                  {item.category}
+                  {article.category}
                 </span>
                 <h4 className="text-xl font-headline mb-2 group-hover:text-primary transition-colors italic">
-                  {item.title}
+                  {article.title}
                 </h4>
                 <p className="text-on-surface-variant text-sm line-clamp-2">
-                  {item.excerpt}
+                  {article.summary}
                 </p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

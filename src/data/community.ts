@@ -70,7 +70,7 @@ export const schools: School[] = [
     type: "Middle",
     gradeRange: "6-8",
     distance: "2.9 miles",
-    href: "https://www.prosper-isd.net",
+    href: "https://www.prosper-isd.net/o/rums",
     description:
       "Part of Prosper ISD, one of Niche.com's top-rated Texas school districts. Offers strong academics, STEM programs, and extracurricular activities.",
   },
@@ -79,7 +79,7 @@ export const schools: School[] = [
     type: "High",
     gradeRange: "9-12",
     distance: "5.4 miles",
-    href: "https://www.prosper-isd.net",
+    href: "https://www.prosper-isd.net/o/phs",
     description:
       "Home of the Eagles, offering advanced placement courses, championship athletics, and a wide range of extracurricular programs in Prosper ISD.",
   },
