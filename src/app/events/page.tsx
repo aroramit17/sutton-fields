@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/layout/PageHeader";
+
+// Events are inserted directly by the nightly Wilson Weekly cron job, outside
+// any request Next.js can hook a revalidation trigger into — force dynamic
+// rendering so new events show up without waiting for a redeploy.
+export const dynamic = "force-dynamic";
 import { FeaturedEvent } from "@/components/events/FeaturedEvent";
 import { WeekEventList } from "@/components/events/WeekEventList";
 import { HoaMeetingSidebar } from "@/components/events/HoaMeetingSidebar";
@@ -43,11 +48,15 @@ export default function EventsPage() {
           <section className="md:col-span-8 flex flex-col gap-8">
             <div className="flex items-center justify-between">
               <h2 className="text-3xl font-headline italic text-on-surface">
-                This Week
+                Featured
               </h2>
               <Badge variant="tag">Featured</Badge>
             </div>
             <FeaturedEvent />
+
+            <h2 className="text-3xl font-headline italic text-on-surface">
+              Upcoming Events
+            </h2>
             <WeekEventList />
           </section>
 

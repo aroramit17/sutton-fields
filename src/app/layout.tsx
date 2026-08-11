@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Newsreader, Manrope } from "next/font/google";
-import { Navbar } from "@/components/layout/Navbar";
+import { SiteHeader } from "@/components/layout/SiteHeader";
 import { Footer } from "@/components/layout/Footer";
 import { CommunityStructuredData, HOAStructuredData } from "@/components/seo/StructuredData";
 import { AuthProvider } from "@/context/AuthContext";
@@ -90,8 +90,8 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col">
         <ClerkProvider>
           <AuthProvider>
-            <Navbar />
-            <main className="pt-24 flex-grow">{children}</main>
+            <SiteHeader />
+            <main className="flex-grow">{children}</main>
             <Footer />
           </AuthProvider>
         </ClerkProvider>

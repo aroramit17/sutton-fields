@@ -4,6 +4,7 @@ import {
   boolean,
   timestamp,
   numeric,
+  integer,
   uuid,
 } from "drizzle-orm/pg-core";
 
@@ -77,4 +78,35 @@ export const carpool_posts = pgTable("carpool_posts", {
   created_at: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   expires_at: timestamp("expires_at", { withTimezone: true }).notNull(),
   deactivated_at: timestamp("deactivated_at", { withTimezone: true }),
+});
+
+export const announcements = pgTable("announcements", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  message: text("message").notNull(),
+  link_url: text("link_url"),
+  link_label: text("link_label"),
+  is_active: boolean("is_active").notNull().default(false),
+  created_by: text("created_by").references(() => profiles.id, { onDelete: "set null" }),
+  created_at: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+export const events = pgTable("events", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  title: text("title").notNull(),
+  description: text("description").notNull(),
+  event_date: timestamp("event_date", { withTimezone: true }).notNull(),
+  location: text("location"),
+  image_url: text("image_url"),
+  is_published: boolean("is_published").notNull().default(true),
+  source: text("source", { enum: ["manual", "wilson_weekly"] }).notNull().default("manual"),
+  created_by: text("created_by").references(() => profiles.id, { onDelete: "set null" }),
+  created_at: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+// Tracks which AgentMail messages the nightly Wilson Weekly scan has already
+// turned into events, so re-running the scan doesn't reprocess old emails.
+export const wilson_weekly_processed = pgTable("wilson_weekly_processed", {
+  message_id: text("message_id").primaryKey(),
+  events_created: integer("events_created").notNull().default(0),
+  processed_at: timestamp("processed_at", { withTimezone: true }).notNull().defaultNow(),
 });

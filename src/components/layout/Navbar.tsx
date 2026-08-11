@@ -13,7 +13,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md shadow-ambient">
+    <nav className="w-full bg-background/80 backdrop-blur-md shadow-ambient">
       <div className="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
         <Link
           href="/"

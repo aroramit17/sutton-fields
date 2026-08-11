@@ -75,3 +75,26 @@ export interface CarpoolPost {
 export interface CarpoolPostWithProfile extends CarpoolPost {
   profiles: Pick<Profile, "first_name" | "last_name"> | null;
 }
+
+export interface Announcement {
+  id: string;
+  message: string;
+  link_url: string | null;
+  link_label: string | null;
+  is_active: boolean;
+  created_by: string | null;
+  created_at: string;
+}
+
+export interface DbEvent {
+  id: string;
+  title: string;
+  description: string;
+  event_date: string;
+  location: string | null;
+  image_url: string | null;
+  is_published: boolean;
+  source: "manual" | "wilson_weekly";
+  created_by: string | null;
+  created_at: string;
+}
