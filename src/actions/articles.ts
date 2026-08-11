@@ -8,7 +8,15 @@ import { articles } from "@/db/schema";
 import { requireAdmin } from "@/lib/auth";
 import type { Article } from "@/types/database";
 
-const genai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+// Lazy — this module is imported by the public /news page too, which has no
+// reason to touch Gemini. A top-level instantiation would throw at import
+// time (crashing /news) whenever GEMINI_API_KEY isn't set, same failure
+// mode as a top-level neon() call.
+let _genai: GoogleGenAI | null = null;
+function getGenAI() {
+  if (!_genai) _genai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+  return _genai;
+}
 
 function serialize(a: typeof articles.$inferSelect): Article {
   return {
@@ -79,6 +87,7 @@ function extractTitle(html: string): string {
 // Consolidates the old /api/news/generate + /api/news/publish routes.
 export async function generateArticleDraft(url: string, category: string) {
   await requireAdmin();
+  const genai = getGenAI();
 
   const response = await fetch(url, {
     headers: {
