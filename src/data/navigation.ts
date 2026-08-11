@@ -9,8 +9,8 @@ export const navLinks: NavLink[] = [
 ];
 
 export const footerLinks: NavLink[] = [
-  { label: "HOA Bylaws", href: "#" },
-  { label: "Contact Committee", href: "#" },
-  { label: "Privacy Policy", href: "#" },
-  { label: "Resident Portal", href: "#" },
+  { label: "HOA Bylaws", href: "/community#documents" },
+  { label: "Contact Committee", href: "https://suttonfieldshoa.com/contact-us.aspx" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Resident Portal", href: "https://suttonfieldshoa.com" },
 ];

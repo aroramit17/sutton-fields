@@ -5,7 +5,7 @@ export function CommunityStructuredData() {
     name: "Sutton Fields",
     description:
       "Sutton Fields is a master-planned community of 2,289 homes in Celina, Texas, developed by Centurion American. Features resort-style pools, walking trails, community garden, and top-rated Prosper ISD schools including Dan Christie Elementary within the community.",
-    url: "https://suttonfields.com",
+    url: "https://suttonfields.info",
     address: {
       "@type": "PostalAddress",
       streetAddress: "4600 Waugh Avenue",
@@ -56,7 +56,7 @@ export function HOAStructuredData() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Sutton Fields Homeowners Association",
-    url: "https://suttonfields.com",
+    url: "https://suttonfields.info",
     telephone: "972-428-2030",
     address: {
       "@type": "PostalAddress",
@@ -97,7 +97,7 @@ export function BreadcrumbStructuredData({
       "@type": "ListItem",
       position: i + 1,
       name: item.name,
-      item: `https://suttonfields.com${item.href}`,
+      item: `https://suttonfields.info${item.href}`,
     })),
   };
 

@@ -72,7 +72,7 @@ export const schools: School[] = [
     distance: "2.9 miles",
     href: "https://www.prosper-isd.net",
     description:
-      "Part of Prosper ISD, ranked #13 Best Public School District in Texas. Offers strong academics, STEM programs, and extracurricular activities.",
+      "Part of Prosper ISD, one of Niche.com's top-rated Texas school districts. Offers strong academics, STEM programs, and extracurricular activities.",
   },
   {
     name: "Prosper High School",
@@ -196,7 +196,7 @@ export const utilities = [
   {
     name: "Electricity",
     provider: "CoServ Electric or GCEC (varies by location)",
-    phone: "CoServ: 1-800-274-4104 | GCEC: 903-482-5231",
+    phone: "CoServ: 1-800-274-4014 | GCEC: 903-482-7100",
     website: "https://www.coserv.com",
     notes: "Provider depends on your specific location within Sutton Fields.",
   },
@@ -210,7 +210,7 @@ export const utilities = [
   {
     name: "Water & Sewer",
     provider: "City of Celina",
-    phone: "972-382-2682",
+    phone: "945-362-9001",
     website: "https://www.celina-tx.gov",
     notes: "",
   },
@@ -235,7 +235,7 @@ export const communityResources: CommunityResource[] = [
     icon: "emergency",
     title: "Emergency Services",
     description:
-      "Celina Police non-emergency: 972-382-3811. Fire Department: 972-382-3500. For emergencies, always call 911.",
+      "Collin County Dispatch (Celina Police non-emergency): 972-547-5350. Celina Fire Department: 945-362-9520. For emergencies, always call 911.",
     href: "tel:911",
     category: "Safety",
   },
@@ -243,8 +243,8 @@ export const communityResources: CommunityResource[] = [
     icon: "delete",
     title: "Trash & Recycling",
     description:
-      "Community Waste Disposal handles weekly collection. Visit the City of Celina website for pickup schedules and bulk item guidelines.",
-    href: "https://www.celina-tx.gov/1140/Trash-Recycling",
+      "Community Waste Disposal (CWD) handles weekly collection, contracted by the City of Celina. Visit CWD's site for pickup schedules and bulk item guidelines.",
+    href: "https://www.communitywastedisposal.com/find-my-city/celina/",
     category: "Services",
   },
   {
@@ -275,7 +275,7 @@ export const communityResources: CommunityResource[] = [
     icon: "school",
     title: "Prosper ISD",
     description:
-      "Ranked #13 Best Public School District in Texas. Dan Christie Elementary is located within Sutton Fields.",
+      "One of Niche.com's top-rated Texas school districts. Dan Christie Elementary is located within Sutton Fields.",
     href: "https://www.prosper-isd.net",
     category: "Education",
   },

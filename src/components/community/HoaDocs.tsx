@@ -7,7 +7,7 @@ export function HoaDocs() {
   // Show document titles publicly (good for SEO - people search for these)
   // but gate the actual download/view links behind login
   return (
-    <section className="max-w-7xl mx-auto px-8 my-24">
+    <section id="documents" className="max-w-7xl mx-auto px-8 my-24">
       <SectionLabel>Official Documents</SectionLabel>
       <h2 className="text-4xl md:text-5xl font-headline mb-4">
         HOA Documents

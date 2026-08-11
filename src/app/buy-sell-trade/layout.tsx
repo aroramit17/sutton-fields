@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Buy, Sell & Trade — Neighborhood Marketplace",
   description:
     "Buy, sell, and trade items with your Sutton Fields neighbors in Celina, TX. Post listings with photos — all listings expire after 48 hours. Resident-verified marketplace.",
-  alternates: { canonical: "https://suttonfields.com/buy-sell-trade" },
+  alternates: { canonical: "https://suttonfields.info/buy-sell-trade" },
   openGraph: {
     title: "Sutton Fields Buy/Sell/Trade — Celina, TX",
     description:

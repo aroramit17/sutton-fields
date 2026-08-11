@@ -19,7 +19,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://suttonfields.com"),
+  metadataBase: new URL("https://suttonfields.info"),
   title: {
     default: "Sutton Fields | Master-Planned Community in Celina, TX",
     template: "%s | Sutton Fields - Celina, TX",
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://suttonfields.com",
+    canonical: "https://suttonfields.info",
   },
 };
 

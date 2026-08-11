@@ -11,19 +11,19 @@ export const metadata: Metadata = {
   title: "Sutton Fields | Master-Planned Community in Celina, TX",
   description:
     "Sutton Fields is a 2,289-home master-planned community in Celina, Texas by Centurion American. Features resort-style pools, 3+ miles of walking trails, community garden, pocket farms, and top-rated Prosper ISD schools including Dan Christie Elementary. HOA dues $550/year.",
-  alternates: { canonical: "https://suttonfields.com" },
+  alternates: { canonical: "https://suttonfields.info" },
 };
 
 const homeFaqs = [
   {
     question: "Where is Sutton Fields located?",
     answer:
-      "Sutton Fields is located at 4600 Waugh Avenue in Celina, TX 75009 (Collin County). It is approximately 15 minutes from Frisco, 21 miles from McKinney, and 40 minutes from Downtown Dallas. The community has easy access to the Dallas North Tollway, US Highway 380, and Preston Road.",
+      "Sutton Fields is located at 4600 Waugh Avenue in Celina, TX 75009 (Collin County). It is approximately 15 miles from Frisco, 21 miles from McKinney, and 45 minutes from Downtown Dallas. The community has easy access to the Dallas North Tollway, US Highway 380, and Preston Road.",
   },
   {
     question: "What school district is Sutton Fields in?",
     answer:
-      "Sutton Fields is served by Prosper ISD, ranked #13 Best Public School District in Texas. Dan Christie Elementary School (PK-5) is located within the community. Students also attend William Rushing Middle School (6-8, 2.9 miles) and Prosper High School (9-12, 5.4 miles).",
+      "Sutton Fields is served by Prosper ISD, one of Niche.com's top-rated Texas school districts. Dan Christie Elementary School (PK-5) is located within the community. Students also attend William Rushing Middle School (6-8, 2.9 miles) and Prosper High School (9-12, 5.4 miles).",
   },
   {
     question: "How much are Sutton Fields HOA dues?",

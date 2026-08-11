@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: "Connect — Sutton Fields",
   description:
     "Find the right WhatsApp group for your school, grade, or interest in Sutton Fields, Celina, TX, plus other ways to stay connected with the community.",
-  alternates: { canonical: "https://suttonfields.com/connect" },
+  alternates: { canonical: "https://suttonfields.info/connect" },
   openGraph: {
     title: "Sutton Fields Connect",
     description:

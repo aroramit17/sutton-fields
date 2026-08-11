@@ -94,7 +94,7 @@ export async function generateArticleDraft(url: string, category: string) {
 
   const response = await fetch(url, {
     headers: {
-      "User-Agent": "Mozilla/5.0 (compatible; SuttonFieldsBot/1.0; +https://suttonfields.com)",
+      "User-Agent": "Mozilla/5.0 (compatible; SuttonFieldsBot/1.0; +https://suttonfields.info)",
     },
   });
   if (!response.ok) {

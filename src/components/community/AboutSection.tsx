@@ -29,9 +29,9 @@ export function AboutSection() {
               many properties back up to greenbelts or community walking trails.
             </p>
             <p>
-              Families benefit from <strong>Prosper ISD</strong> schools — ranked #13
-              Best Public School District in Texas — including Dan Christie Elementary,
-              which was built right inside the community and opened in 2023.
+              Families benefit from <strong>Prosper ISD</strong> schools — one of
+              Niche.com&rsquo;s top-rated Texas school districts — including Dan Christie
+              Elementary, which was built right inside the community and opened in 2023.
             </p>
           </div>
 

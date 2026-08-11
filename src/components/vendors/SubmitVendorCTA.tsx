@@ -16,7 +16,7 @@ export function SubmitVendorCTA() {
           recommendation.
         </p>
       </div>
-      <Button variant="primary" href="/vendors/submit" className="mt-4 shadow-md hover:shadow-lg hover:-translate-y-1">
+      <Button variant="primary" href="https://suttonfieldshoa.com/contact-us.aspx" className="mt-4 shadow-md hover:shadow-lg hover:-translate-y-1">
         Submit Details
       </Button>
     </div>

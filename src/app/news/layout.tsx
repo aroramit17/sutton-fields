@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: "News — Celina & Community Updates",
   description:
     "Latest news for Sutton Fields residents in Celina, TX — city updates, Prosper ISD school news, community events, safety alerts, and neighborhood developments.",
-  alternates: { canonical: "https://suttonfields.com/news" },
+  alternates: { canonical: "https://suttonfields.info/news" },
   openGraph: {
     title: "Sutton Fields News — Celina, TX Community Updates",
     description:

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Community Info — Schools, Amenities, HOA",
   description:
     "Everything about Sutton Fields in Celina, TX: Prosper ISD schools (Dan Christie Elementary on-site), resort-style pools, walking trails, community garden, HOA details, utility providers, and nearby attractions. Developed by Centurion American with 2,289 homes.",
-  alternates: { canonical: "https://suttonfields.com/community" },
+  alternates: { canonical: "https://suttonfields.info/community" },
   openGraph: {
     title: "Sutton Fields Community — Celina, TX Neighborhood Guide",
     description:
@@ -28,7 +28,7 @@ const communityFaqs = [
   {
     question: "What utilities do I need to set up at Sutton Fields?",
     answer:
-      "Electric: CoServ (1-800-274-4104) or GCEC (903-482-5231) depending on your location. Gas: Atmos Energy (1-800-460-3030). Water/Sewer: City of Celina (972-382-2682). Trash: Community Waste Disposal (contracted by City of Celina, weekly pickup). Internet: AT&T Fiber, Spectrum, and others serve the area.",
+      "Electric: CoServ (1-800-274-4014) or GCEC (903-482-7100) depending on your location. Gas: Atmos Energy (1-800-460-3030). Water/Sewer: City of Celina (945-362-9001). Trash: Community Waste Disposal (contracted by City of Celina, weekly pickup). Internet: AT&T Fiber, Spectrum, and others serve the area.",
   },
   {
     question: "Who manages the Sutton Fields HOA?",

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Carpool Board — Sutton Fields",
   description:
     "Find or post carpool matches for school runs and commutes in Sutton Fields, Celina, TX — Rushing Middle School, Dan Christie Elementary, UTD, UNT, and workplaces. Posts stay active for 30 days.",
-  alternates: { canonical: "https://suttonfields.com/carpool" },
+  alternates: { canonical: "https://suttonfields.info/carpool" },
   openGraph: {
     title: "Sutton Fields Carpool Board",
     description:

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Events & Community Calendar",
   description:
     "Sutton Fields community events in Celina, TX — pool parties, run clubs, garden meetups, HOA board meetings, and neighborhood socials. See what's happening at the Amenity Center and around the community.",
-  alternates: { canonical: "https://suttonfields.com/events" },
+  alternates: { canonical: "https://suttonfields.info/events" },
   openGraph: {
     title: "Sutton Fields Events — Community Calendar in Celina, TX",
     description:

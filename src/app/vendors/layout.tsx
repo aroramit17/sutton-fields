@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: "Vendor Directory — Local Services",
   description:
     "Find trusted, community-vetted vendors serving Sutton Fields in Celina, TX. Landscapers, electricians, pet sitters, bakeries, and childcare — all recommended by your neighbors.",
-  alternates: { canonical: "https://suttonfields.com/vendors" },
+  alternates: { canonical: "https://suttonfields.info/vendors" },
   openGraph: {
     title: "Sutton Fields Vendor Directory — Celina, TX",
     description:

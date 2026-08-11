@@ -34,15 +34,27 @@ export function Footer() {
           <div className="md:col-span-3">
             <h4 className="font-bold text-sm text-on-surface mb-4">Quick Links</h4>
             <div className="flex flex-col gap-2">
-              {footerLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="text-on-surface-variant hover:text-primary text-sm transition-all"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {footerLinks.map((link) =>
+                link.href.startsWith("http") ? (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-on-surface-variant hover:text-primary text-sm transition-all"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="text-on-surface-variant hover:text-primary text-sm transition-all"
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
             </div>
           </div>
           <div className="md:col-span-3">
@@ -66,13 +78,17 @@ export function Footer() {
             <h4 className="font-bold text-sm text-on-surface mb-4">Connect</h4>
             <div className="flex gap-3">
               <a
-                href="#"
+                href="https://www.facebook.com/groups/suttonfields/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-on-primary transition-all"
               >
                 <Icon name="share" className="text-xl" />
               </a>
               <a
-                href="#"
+                href="https://www.google.com/maps/search/?api=1&query=4600+Waugh+Avenue+Celina+TX+75009"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-on-primary transition-all"
               >
                 <Icon name="map" className="text-xl" />

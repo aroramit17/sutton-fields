@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Lost & Found — Sutton Fields",
   description:
     "Lost a pet or item in Sutton Fields, Celina, TX, or found one? Post it here to reconnect with your neighbors. Posts stay active for 14 days.",
-  alternates: { canonical: "https://suttonfields.com/lost-found" },
+  alternates: { canonical: "https://suttonfields.info/lost-found" },
   openGraph: {
     title: "Sutton Fields Lost & Found",
     description:
