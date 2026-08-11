@@ -1,19 +1,10 @@
-import { createClient } from "@/lib/supabase/server";
+import { getPublishedArticles } from "@/actions/articles";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { NewsArticleCard } from "@/components/news/NewsArticleCard";
 import { BreadcrumbStructuredData } from "@/components/seo/StructuredData";
-import type { Article } from "@/types/database";
 
 export default async function NewsPage() {
-  const supabase = await createClient();
-
-  const { data: articles } = await supabase
-    .from("articles")
-    .select("*")
-    .eq("is_published", true)
-    .order("published_at", { ascending: false });
-
-  const publishedArticles = (articles as Article[]) || [];
+  const publishedArticles = await getPublishedArticles();
   const featured = publishedArticles[0];
   const rest = publishedArticles.slice(1);
 

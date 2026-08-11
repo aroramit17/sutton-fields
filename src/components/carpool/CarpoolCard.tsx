@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuth } from "@/context/AuthContext";
-import { createClient } from "@/lib/supabase/client";
+import { deactivateCarpoolPost } from "@/actions/carpool";
 import { Icon } from "@/components/ui/Icon";
 import type { CarpoolPostWithProfile } from "@/types/database";
 
@@ -15,11 +15,7 @@ export function CarpoolCard({ post, onDeactivated }: CarpoolCardProps) {
   const isOwner = user?.id === post.user_id;
 
   async function handleDeactivate() {
-    const supabase = createClient();
-    await supabase
-      .from("carpool_posts")
-      .update({ is_active: false, deactivated_at: new Date().toISOString() })
-      .eq("id", post.id);
+    await deactivateCarpoolPost(post.id);
     onDeactivated?.();
   }
 

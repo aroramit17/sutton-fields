@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { CarpoolGrid } from "@/components/carpool/CarpoolGrid";
-import { createClient } from "@/lib/supabase/client";
+import { getActiveCarpoolPosts } from "@/actions/carpool";
 import type { CarpoolPostWithProfile } from "@/types/database";
 
 export default function CarpoolPage() {
@@ -11,15 +11,8 @@ export default function CarpoolPage() {
   const [loading, setLoading] = useState(true);
 
   const fetchPosts = useCallback(async () => {
-    const supabase = createClient();
-    const { data } = await supabase
-      .from("carpool_posts")
-      .select("*, profiles(first_name, last_name)")
-      .eq("is_active", true)
-      .gt("expires_at", new Date().toISOString())
-      .order("created_at", { ascending: false });
-
-    setPosts((data as CarpoolPostWithProfile[]) || []);
+    const data = await getActiveCarpoolPosts();
+    setPosts(data);
     setLoading(false);
   }, []);
 

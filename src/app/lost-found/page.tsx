@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { LostFoundGrid } from "@/components/lost-found/LostFoundGrid";
-import { createClient } from "@/lib/supabase/client";
+import { getActiveLostFoundPosts } from "@/actions/lost-found";
 import type { LostFoundPostWithProfile } from "@/types/database";
 
 export default function LostFoundPage() {
@@ -11,15 +11,8 @@ export default function LostFoundPage() {
   const [loading, setLoading] = useState(true);
 
   const fetchPosts = useCallback(async () => {
-    const supabase = createClient();
-    const { data } = await supabase
-      .from("lost_found_posts")
-      .select("*, profiles(first_name, last_name)")
-      .eq("is_active", true)
-      .gt("expires_at", new Date().toISOString())
-      .order("created_at", { ascending: false });
-
-    setPosts((data as LostFoundPostWithProfile[]) || []);
+    const data = await getActiveLostFoundPosts();
+    setPosts(data);
     setLoading(false);
   }, []);
 

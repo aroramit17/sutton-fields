@@ -2,8 +2,9 @@
 
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { upload } from "@vercel/blob/client";
 import { useAuth } from "@/context/AuthContext";
-import { createClient } from "@/lib/supabase/client";
+import { createLostFoundPost } from "@/actions/lost-found";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 
@@ -52,40 +53,24 @@ export function LostFoundForm() {
     setError(null);
     setSubmitting(true);
 
-    const supabase = createClient();
-
-    const imageUrls: string[] = [];
-    for (const { file } of previews) {
-      const ext = file.name.split(".").pop() || "jpg";
-      const path = `${user.id}/${crypto.randomUUID()}.${ext}`;
-      const { error: uploadError } = await supabase.storage
-        .from("lost-found-images")
-        .upload(path, file);
-      if (uploadError) {
-        setError(`Image upload failed: ${uploadError.message}`);
-        setSubmitting(false);
-        return;
+    try {
+      const imageUrls: string[] = [];
+      for (const { file } of previews) {
+        const ext = file.name.split(".").pop() || "jpg";
+        const blob = await upload(`lost-found-images/${user.id}/${crypto.randomUUID()}.${ext}`, file, {
+          access: "public",
+          handleUploadUrl: "/api/blob/upload",
+        });
+        imageUrls.push(blob.url);
       }
-      const { data } = supabase.storage.from("lost-found-images").getPublicUrl(path);
-      imageUrls.push(data.publicUrl);
-    }
 
-    const { error: insertError } = await supabase.from("lost_found_posts").insert({
-      user_id: user.id,
-      status,
-      title,
-      description,
-      location,
-      images: imageUrls,
-    });
+      await createLostFoundPost({ status, title, description, location, images: imageUrls });
 
-    if (insertError) {
-      setError(`Failed to create post: ${insertError.message}`);
+      router.push("/lost-found");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to create post");
       setSubmitting(false);
-      return;
     }
-
-    router.push("/lost-found");
   }
 
   return (

@@ -2,8 +2,9 @@
 
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { upload } from "@vercel/blob/client";
 import { useAuth } from "@/context/AuthContext";
-import { createClient } from "@/lib/supabase/client";
+import { createListing } from "@/actions/listings";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 
@@ -52,42 +53,30 @@ export function ListingForm() {
     setError(null);
     setSubmitting(true);
 
-    const supabase = createClient();
-
-    // Upload images
-    const imageUrls: string[] = [];
-    for (const { file } of previews) {
-      const ext = file.name.split(".").pop() || "jpg";
-      const path = `${user.id}/${crypto.randomUUID()}.${ext}`;
-      const { error: uploadError } = await supabase.storage
-        .from("listing-images")
-        .upload(path, file);
-      if (uploadError) {
-        setError(`Image upload failed: ${uploadError.message}`);
-        setSubmitting(false);
-        return;
+    try {
+      const imageUrls: string[] = [];
+      for (const { file } of previews) {
+        const ext = file.name.split(".").pop() || "jpg";
+        const blob = await upload(`listing-images/${user.id}/${crypto.randomUUID()}.${ext}`, file, {
+          access: "public",
+          handleUploadUrl: "/api/blob/upload",
+        });
+        imageUrls.push(blob.url);
       }
-      const { data } = supabase.storage.from("listing-images").getPublicUrl(path);
-      imageUrls.push(data.publicUrl);
-    }
 
-    // Insert listing
-    const { error: insertError } = await supabase.from("listings").insert({
-      user_id: user.id,
-      title,
-      description,
-      price: parseFloat(price),
-      location,
-      images: imageUrls,
-    });
+      await createListing({
+        title,
+        description,
+        price: parseFloat(price),
+        location,
+        images: imageUrls,
+      });
 
-    if (insertError) {
-      setError(`Failed to create listing: ${insertError.message}`);
+      router.push("/buy-sell-trade");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to create listing");
       setSubmitting(false);
-      return;
     }
-
-    router.push("/buy-sell-trade");
   }
 
   return (

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
-import { createClient } from "@/lib/supabase/client";
+import { createCarpoolPost } from "@/actions/carpool";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 
@@ -23,22 +23,13 @@ export function CarpoolForm() {
     setError(null);
     setSubmitting(true);
 
-    const supabase = createClient();
-    const { error: insertError } = await supabase.from("carpool_posts").insert({
-      user_id: user.id,
-      title,
-      description,
-      destination,
-      schedule,
-    });
-
-    if (insertError) {
-      setError(`Failed to create post: ${insertError.message}`);
+    try {
+      await createCarpoolPost({ title, description, destination, schedule });
+      router.push("/carpool");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to create post");
       setSubmitting(false);
-      return;
     }
-
-    router.push("/carpool");
   }
 
   return (

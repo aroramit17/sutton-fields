@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { ListingGrid } from "@/components/marketplace/ListingGrid";
 import { ListingSearch } from "@/components/marketplace/ListingSearch";
-import { createClient } from "@/lib/supabase/client";
+import { getActiveListings } from "@/actions/listings";
 import type { ListingWithProfile } from "@/types/database";
 
 export default function BuySellTradePage() {
@@ -13,15 +13,8 @@ export default function BuySellTradePage() {
   const [loading, setLoading] = useState(true);
 
   const fetchListings = useCallback(async () => {
-    const supabase = createClient();
-    const { data } = await supabase
-      .from("listings")
-      .select("*, profiles(first_name, last_name)")
-      .eq("is_active", true)
-      .gt("expires_at", new Date().toISOString())
-      .order("created_at", { ascending: false });
-
-    setListings((data as ListingWithProfile[]) || []);
+    const data = await getActiveListings();
+    setListings(data);
     setLoading(false);
   }, []);
 

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useAuth } from "@/context/AuthContext";
-import { createClient } from "@/lib/supabase/client";
+import { deactivateListing } from "@/actions/listings";
 import { Icon } from "@/components/ui/Icon";
 import type { ListingWithProfile } from "@/types/database";
 
@@ -25,11 +25,7 @@ export function ListingCard({ listing, onDeactivated }: ListingCardProps) {
   const isOwner = user?.id === listing.user_id;
 
   async function handleDeactivate() {
-    const supabase = createClient();
-    await supabase
-      .from("listings")
-      .update({ is_active: false, deactivated_at: new Date().toISOString() })
-      .eq("id", listing.id);
+    await deactivateListing(listing.id);
     onDeactivated?.();
   }
 

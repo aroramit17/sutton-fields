@@ -2,7 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
-import { createClient } from "@/lib/supabase/client";
+import {
+  getAllArticlesForAdmin,
+  generateArticleDraft,
+  togglePublishArticle,
+  deleteArticle,
+} from "@/actions/articles";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import type { Article } from "@/types/database";
@@ -28,13 +33,12 @@ export default function AdminNewsPage() {
   const [success, setSuccess] = useState<string | null>(null);
 
   async function fetchArticles() {
-    const supabase = createClient();
-    // Admin sees all articles (RLS policy allows this for admins)
-    const { data } = await supabase
-      .from("articles")
-      .select("*")
-      .order("created_at", { ascending: false });
-    setArticles(data || []);
+    try {
+      const data = await getAllArticlesForAdmin();
+      setArticles(data);
+    } catch {
+      setArticles([]);
+    }
   }
 
   useEffect(() => {
@@ -48,43 +52,24 @@ export default function AdminNewsPage() {
     setGenerating(true);
 
     try {
-      const res = await fetch("/api/news/generate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url, category }),
-      });
-
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data.error || "Failed to generate article");
-      } else {
-        setSuccess(`Article "${data.article.title}" generated successfully!`);
-        setUrl("");
-        fetchArticles();
-      }
-    } catch {
-      setError("Network error — please try again");
+      const article = await generateArticleDraft(url, category);
+      setSuccess(`Article "${article.title}" generated successfully!`);
+      setUrl("");
+      fetchArticles();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to generate article");
     }
 
     setGenerating(false);
   }
 
   async function togglePublish(article: Article) {
-    const res = await fetch("/api/news/publish", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        articleId: article.id,
-        publish: !article.is_published,
-      }),
-    });
-
-    if (res.ok) fetchArticles();
+    await togglePublishArticle(article.id, !article.is_published);
+    fetchArticles();
   }
 
-  async function deleteArticle(id: string) {
-    const supabase = createClient();
-    await supabase.from("articles").delete().eq("id", id);
+  async function handleDelete(id: string) {
+    await deleteArticle(id);
     fetchArticles();
   }
 
@@ -235,7 +220,7 @@ export default function AdminNewsPage() {
                 {article.is_published ? "Unpublish" : "Publish"}
               </button>
               <button
-                onClick={() => deleteArticle(article.id)}
+                onClick={() => handleDelete(article.id)}
                 className="px-4 py-2 rounded-xl text-xs font-bold bg-error-container text-on-error-container hover:bg-error hover:text-on-error transition-colors"
               >
                 Delete

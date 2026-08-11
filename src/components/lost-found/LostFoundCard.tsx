@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useAuth } from "@/context/AuthContext";
-import { createClient } from "@/lib/supabase/client";
+import { deactivateLostFoundPost } from "@/actions/lost-found";
 import { Icon } from "@/components/ui/Icon";
 import type { LostFoundPostWithProfile } from "@/types/database";
 
@@ -16,11 +16,7 @@ export function LostFoundCard({ post, onDeactivated }: LostFoundCardProps) {
   const isOwner = user?.id === post.user_id;
 
   async function handleDeactivate() {
-    const supabase = createClient();
-    await supabase
-      .from("lost_found_posts")
-      .update({ is_active: false, deactivated_at: new Date().toISOString() })
-      .eq("id", post.id);
+    await deactivateLostFoundPost(post.id);
     onDeactivated?.();
   }
 
