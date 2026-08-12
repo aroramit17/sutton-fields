@@ -176,6 +176,21 @@ export const road_projects = pgTable("road_projects", {
   last_updated: timestamp("last_updated", { withTimezone: true }).notNull().defaultNow(),
 });
 
+// One row per Thursday Dispatch issue. html is a full snapshot of the sent
+// email (escape-by-construction, with {{UNSUB_URL}} placeholders) so the
+// /dispatch archive renders exactly what subscribers received. sent_at doubles
+// as the idempotency guard: sendDispatch skips if an issue went out in the
+// past 6 days.
+export const dispatch_issues = pgTable("dispatch_issues", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  subject: text("subject").notNull(),
+  html: text("html").notNull(),
+  sent_at: timestamp("sent_at", { withTimezone: true }),
+  recipient_count: integer("recipient_count").notNull().default(0),
+  failure_count: integer("failure_count").notNull().default(0),
+  created_at: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
 // Homepage "Board" utility chips (pool / trash / water / roads). Key-value by
 // design: chips are few, fixed, and admin-curated; the school chip is derived
 // from events at render time rather than stored here.

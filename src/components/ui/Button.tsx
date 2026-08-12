@@ -11,6 +11,7 @@ interface ButtonProps {
   className?: string;
   type?: "button" | "submit";
   onClick?: () => void;
+  disabled?: boolean;
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
@@ -30,10 +31,12 @@ export function Button({
   className,
   type = "button",
   onClick,
+  disabled = false,
 }: ButtonProps) {
   const styles = cn(
     "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-sm transition-all",
     variantStyles[variant],
+    disabled && "opacity-60 pointer-events-none",
     className
   );
 
@@ -46,7 +49,7 @@ export function Button({
   }
 
   return (
-    <button type={type} className={styles} onClick={onClick}>
+    <button type={type} className={styles} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );

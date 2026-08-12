@@ -11,6 +11,7 @@ const SECTIONS = [
   { href: "/admin/board", icon: "dashboard", title: "The Board", desc: "Homepage status chips: pool, trash override, water, roads." },
   { href: "/admin/tipline", icon: "upload", title: "Tipline", desc: "Drop Facebook screenshots, extracts draft events and news." },
   { href: "/admin/announcements", icon: "campaign", title: "Announcements", desc: "The sticky banner at the top of every page." },
+  { href: "/admin/dispatch", icon: "mail", title: "The Dispatch", desc: "Preview this week's issue, send a test, check subscriber count." },
 ];
 
 export default function AdminIndexPage() {
