@@ -1,53 +1,55 @@
 import type { Metadata } from "next";
-import { HeroSection } from "@/components/home/HeroSection";
-import { QuickLinks } from "@/components/home/QuickLinks";
-import { NewsGrid } from "@/components/home/NewsGrid";
-import { NeighborSpotlight } from "@/components/home/NeighborSpotlight";
-import { CommunityStatsBar } from "@/components/home/CommunityStatsBar";
+import Link from "next/link";
+import { TheBoard } from "@/components/home/TheBoard";
+import { LeadStory } from "@/components/home/LeadStory";
+import { TheWire } from "@/components/home/TheWire";
+import { AroundTheNeighborhood } from "@/components/home/AroundTheNeighborhood";
+import { DigestBand } from "@/components/home/DigestBand";
+import { WeekEventList } from "@/components/events/WeekEventList";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 import { FAQStructuredData } from "@/components/seo/StructuredData";
 
 export const metadata: Metadata = {
-  title: "Sutton Fields | Master-Planned Community in Celina, TX",
+  title: "Sutton Fields | The Unofficial Record — Celina, TX",
   description:
-    "Sutton Fields is a 2,289-home master-planned community in Celina, Texas by Centurion American. Features resort-style pools, 3+ miles of walking trails, community garden, pocket farms, and top-rated Prosper ISD schools including Dan Christie Elementary. HOA dues $550/year.",
+    "The independent, resident-run hub for Sutton Fields in Celina, Texas: neighborhood news, events, pool and trash status, classifieds, and straight answers about schools, taxes, roads, and the HOA.",
   alternates: { canonical: "https://suttonfields.info" },
 };
 
-// NewsGrid pulls live articles from the DB — without this the homepage
-// would statically bake in whatever was published at build time and never
-// pick up new articles until the next deploy.
+// Every section pulls live DB data — without this the homepage would bake in
+// whatever existed at build time and never refresh until the next deploy.
 export const revalidate = 900;
 
 const homeFaqs = [
   {
     question: "Where is Sutton Fields located?",
     answer:
-      "Sutton Fields is located at 4600 Waugh Avenue in Celina, TX 75009 (Collin County). It is approximately 15 miles from Frisco, 21 miles from McKinney, and 45 minutes from Downtown Dallas. The community has easy access to the Dallas North Tollway, US Highway 380, and Preston Road.",
+      "Sutton Fields is located at 4600 Waugh Avenue in Celina, TX 75009, on the Denton County side of the city. It is approximately 15 miles from Frisco, 21 miles from McKinney, and 45 minutes from Downtown Dallas, with access via FM 428, FM 1385, and the Dallas North Tollway extension (opening to FM 428 in late 2027).",
   },
   {
     question: "What school district is Sutton Fields in?",
     answer:
-      "Sutton Fields is served by Prosper ISD, one of Niche.com's top-rated Texas school districts. Dan Christie Elementary School (PK-5) is located within the community. Students also attend William Rushing Middle School (6-8, 2.9 miles) and Prosper High School (9-12, 5.4 miles).",
+      "Sutton Fields is served by Prosper ISD. Dan Christie Elementary School (PK-5) is located inside the community. Following Prosper ISD's 2025-26 rezoning, builder listings show Sutton Fields feeding Pete Moseley Middle School and Richland High School — verify your address on the district's attendance boundary map, as Prosper ISD adjusts zones almost every year.",
   },
   {
     question: "How much are Sutton Fields HOA dues?",
     answer:
-      "Sutton Fields HOA annual dues are $550 per year. The HOA is managed by Essex Association Management L.P. You can pay online via ATG Pay or CIT Property Pay using credit/debit card or e-check. Contact the HOA at 972-428-2030.",
+      "Sutton Fields HOA annual dues are $550 per year. The HOA is managed by Essex Association Management L.P. You can pay online via the resident portal. Contact the HOA at 972-428-2030.",
   },
   {
     question: "What amenities does Sutton Fields offer?",
     answer:
-      "Sutton Fields features two resort-style swimming pools with cabanas, a splash pad, over 3 miles of walking trails, a community garden and pocket farms, playgrounds, basketball court, fire pit, scenic ponds, and a central Amenity Center at 4515 Westminster Ave with picnic areas and grilling stations.",
+      "Sutton Fields features two resort-style swimming pools with cabanas, a lap pool, a splash pad, over 3 miles of walking trails, a community garden and pocket farms, playgrounds, tennis court, fire pit, scenic ponds, and a central Amenity Center at 4515 Westminster Ave. A second amenity center is under construction at 5512 Liverpool.",
   },
   {
     question: "Who developed Sutton Fields?",
     answer:
-      "Sutton Fields was developed by Centurion American Development Group. The community includes homes by builders such as D.R. Horton, First Texas Homes, Lennar, Mattamy Homes, M/I Homes, Bloomfield Homes, Pacesetter Homes, Sandlin Homes, Taylor Morrison, Beazer Homes, and more.",
+      "Sutton Fields was developed by Centurion American Development Group. Builders include D.R. Horton, First Texas Homes, Lennar, Mattamy Homes, M/I Homes, Bloomfield Homes, Pacesetter Homes, Sandlin Homes, Stonehollow Homes, and Beazer Homes in earlier phases, with roughly 2,350 homes planned at buildout.",
   },
   {
-    question: "What are home prices in Sutton Fields?",
+    question: "Does Sutton Fields have a PID or MUD?",
     answer:
-      "Homes in Sutton Fields range from the mid-$500s to the high-$800s depending on builder, size, and features. The community contains 2,289 single-family homes with an additional 450-home expansion approved.",
+      "Sutton Fields is covered by the Sutton Fields II Public Improvement District (PID), administered by MuniCap for the City of Celina. PID assessments are fixed when the bonds are sold and appear as an annual installment on your property tax bill, partially offset by a TIRZ credit. There is no MUD.",
   },
 ];
 
@@ -55,11 +57,32 @@ export default function HomePage() {
   return (
     <>
       <FAQStructuredData faqs={homeFaqs} />
-      <HeroSection />
-      <CommunityStatsBar />
-      <QuickLinks />
-      <NewsGrid />
-      <NeighborSpotlight />
+      <TheBoard />
+      <LeadStory />
+
+      {/* This Week */}
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-8">
+        <div className="hairline flex items-end justify-between pt-6">
+          <div>
+            <SectionLabel section="events" className="!mb-1">
+              This Week
+            </SectionLabel>
+            <h2 className="font-headline text-3xl font-bold text-on-surface">
+              What&apos;s Happening
+            </h2>
+          </div>
+          <Link href="/events" className="dateline !text-primary">
+            Full calendar →
+          </Link>
+        </div>
+        <div className="mt-6">
+          <WeekEventList limit={6} />
+        </div>
+      </section>
+
+      <TheWire />
+      <AroundTheNeighborhood />
+      <DigestBand />
     </>
   );
 }

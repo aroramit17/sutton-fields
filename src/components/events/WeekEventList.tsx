@@ -1,8 +1,9 @@
 import { getUpcomingEvents } from "@/actions/events";
 import { Icon } from "@/components/ui/Icon";
 
-export async function WeekEventList() {
-  const events = await getUpcomingEvents();
+export async function WeekEventList({ limit }: { limit?: number } = {}) {
+  const allEvents = await getUpcomingEvents();
+  const events = limit ? allEvents.slice(0, limit) : allEvents;
 
   if (events.length === 0) {
     return (
