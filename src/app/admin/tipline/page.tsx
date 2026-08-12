@@ -66,7 +66,7 @@ export default function AdminTiplinePage() {
       <p className="text-on-surface-variant mb-8">
         Drop screenshots from the Facebook group, flyers, HOA letters, or
         school notices. Dated items become <strong>draft events</strong>;
-        newsworthy items become <strong>draft news articles</strong> — both
+        newsworthy items become <strong>draft news articles</strong>, both
         wait for your approval in their admin pages before publishing.
       </p>
 
@@ -108,7 +108,7 @@ export default function AdminTiplinePage() {
               <ul className="space-y-1 text-sm text-on-surface">
                 {result.eventsCreated.map((e, i) => (
                   <li key={i}>
-                    <strong>{e.title}</strong> — {e.event_date}
+                    <strong>{e.title}</strong>, {e.event_date}
                   </li>
                 ))}
               </ul>

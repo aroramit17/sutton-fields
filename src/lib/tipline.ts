@@ -97,10 +97,10 @@ export async function processTiplineImages(
     {
       type: "input_text",
       text:
-        `These are screenshots submitted by the admin of a neighborhood community site for Sutton Fields (Celina, TX) — typically Facebook group posts, flyers, HOA letters, or school notices. Today's date is ${referenceDate}. ` +
-        "Extract two things: (1) EVENTS — anything with a specific date (community events, meetings, closures, deadlines). Resolve partial dates to the nearest sensible upcoming occurrence relative to today. " +
-        "(2) NEWS — noteworthy neighborhood information without a specific event date (a new store opening announcement, HOA policy change, construction notice). " +
-        "Ignore personal chatter, comments, usernames, and anything identifying a private individual — extract only the substantive community information. " +
+        `These are screenshots submitted by the admin of a neighborhood community site for Sutton Fields (Celina, TX), typically Facebook group posts, flyers, HOA letters, or school notices. Today's date is ${referenceDate}. ` +
+        "Extract two things: (1) EVENTS, anything with a specific date (community events, meetings, closures, deadlines). Resolve partial dates to the nearest sensible upcoming occurrence relative to today. " +
+        "(2) NEWS, noteworthy neighborhood information without a specific event date (a new store opening announcement, HOA policy change, construction notice). " +
+        "Ignore personal chatter, comments, usernames, and anything identifying a private individual. Extract only the substantive community information. Never use em dashes in any text you write. " +
         'Respond with ONLY a JSON object (no prose, no markdown fences): {"events": [{"title": string, "description": string (1-2 sentences), "event_date": "YYYY-MM-DD", "location": string ("" if unknown)}], "news": [{"title": string (headline), "summary": string (2-3 sentences), "category": string (one of: Community, Schools, City, Construction, Retail)}]}. ' +
         'If nothing qualifies, respond: {"events": [], "news": []}',
     },

@@ -40,13 +40,15 @@ function extractTitle(html: string): string {
 
 // Shared by the admin "paste a URL" action and the nightly local-news scan:
 // scrape a source URL, summarize + generate a headline/image with OpenAI,
-// upload the image to Vercel Blob, and save as an unpublished draft awaiting
-// admin approval. Caller is responsible for authorization — this function
-// does none.
+// upload the image to Vercel Blob, and save the article. Admin drafts stay
+// unpublished for review; the nightly scan passes publish=true so the news
+// section never sits empty. Caller is responsible for authorization — this
+// function does none.
 export async function draftArticleFromUrl(
   url: string,
   category: string,
-  createdBy: string | null
+  createdBy: string | null,
+  options: { publish?: boolean } = {}
 ) {
   const openai = getOpenAI();
 
@@ -65,7 +67,7 @@ export async function draftArticleFromUrl(
 
   const summaryResponse = await openai.responses.create({
     model: TEXT_MODEL,
-    input: `You are a community news editor for Sutton Fields, a residential neighborhood in Celina, Texas. Summarize the following article in 2-3 paragraphs that would be relevant and interesting to neighborhood residents. Write in a warm, community-focused tone. Include key facts and dates. Do not include any preamble like "Here's a summary" — just write the summary directly.
+    input: `You are a community news editor for Sutton Fields, a residential neighborhood in Celina, Texas. Summarize the following article in 2-3 paragraphs that would be relevant and interesting to neighborhood residents. Write in a warm, community-focused tone. Include key facts and dates. Never use em dashes; use commas, colons, or separate sentences instead. Do not include any preamble like "Here's a summary", just write the summary directly.
 
 Article source: ${url}
 Article title: ${sourceTitle}
@@ -78,7 +80,7 @@ ${articleText}`,
 
   const titleResponse = await openai.responses.create({
     model: TEXT_MODEL,
-    input: `Write a short, engaging headline (max 80 characters) for this community news article summary. No quotes around it. Just the headline text.
+    input: `Write a short, engaging headline (max 80 characters) for this community news article summary. No quotes around it. Never use em dashes. Just the headline text.
 
 Summary: ${summary}`,
   });
@@ -116,7 +118,8 @@ Summary: ${summary}`,
       source_title: sourceTitle,
       image_url: imageUrl,
       category: category || "Community",
-      is_published: false,
+      is_published: options.publish ?? false,
+      published_at: options.publish ? new Date() : null,
       created_by: createdBy,
     })
     .returning();

@@ -19,7 +19,7 @@ export function Dateline({ prefix = "Celina, TX", date, className }: DatelinePro
 
   return (
     <span className={cn("dateline", className)}>
-      {prefix.toUpperCase()} — {formatted}
+      {prefix.toUpperCase()} · {formatted}
     </span>
   );
 }

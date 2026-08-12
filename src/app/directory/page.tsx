@@ -64,8 +64,16 @@ export default function DirectoryPage() {
       <PageHeader
         label="Directory"
         title="Trusted by your actual neighbors."
-        description="Community-vetted vendors serving Sutton Fields — from sprinkler repair to babysitters — plus the groups and channels where the neighborhood organizes."
+        description="Community-vetted vendors serving Sutton Fields, from sprinkler repair to babysitters, plus the groups and channels where the neighborhood organizes."
       />
+      <div className="mb-8 rounded-2xl border border-outline-variant bg-surface-container-low p-4 text-sm text-on-surface-variant">
+        <strong className="text-on-surface">A note on this list:</strong>{" "}
+        These vendors were compiled from resident recommendations in the
+        Facebook group and the community&apos;s shared spreadsheet. Contact
+        details and pricing may be out of date, so please do your own checks
+        and verification before hiring. This site is not responsible for the
+        quality of any vendor&apos;s work.
+      </div>
       <VendorSearch
         onSearch={setSearchQuery}
         onFilterChange={setActiveFilter}
@@ -84,7 +92,7 @@ export default function DirectoryPage() {
           Groups &amp; Rides
         </h2>
         <p className="text-on-surface-variant text-sm mb-6 max-w-2xl">
-          The real-time conversation lives on Facebook — this site is the
+          The real-time conversation lives on Facebook, this site is the
           reference desk. Carpool matching for school runs and commutes happens
           in the group, too.
         </p>
@@ -118,7 +126,7 @@ export default function DirectoryPage() {
                 Carpool &amp; school runs
               </h3>
               <p className="text-sm text-on-surface-variant">
-                Ask in the Facebook group — posts there reach 3,000+ neighbors
+                Ask in the Facebook group, posts there reach 3,000+ neighbors
                 instantly, which is exactly what ride matching needs.
               </p>
             </div>

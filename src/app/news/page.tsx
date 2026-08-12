@@ -21,7 +21,7 @@ export default async function NewsPage() {
         <PageHeader
           label="Community News"
           title="What's Happening in Celina"
-          description="Stay up to date with the latest news relevant to Sutton Fields residents — city updates, school news, and community developments."
+          description="Stay up to date with the latest news relevant to Sutton Fields residents, city updates, school news, and community developments."
         />
 
         {publishedArticles.length === 0 ? (

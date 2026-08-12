@@ -9,7 +9,7 @@ const SECTIONS = [
   { href: "/admin/events", icon: "event", title: "Events", desc: "Manual events plus Wilson Weekly and Tipline drafts." },
   { href: "/admin/answers", icon: "help_center", title: "Answers", desc: "The Q&A library and the road tracker. Amber = needs re-verification." },
   { href: "/admin/board", icon: "dashboard", title: "The Board", desc: "Homepage status chips: pool, trash override, water, roads." },
-  { href: "/admin/tipline", icon: "upload", title: "Tipline", desc: "Drop Facebook screenshots — extracts draft events and news." },
+  { href: "/admin/tipline", icon: "upload", title: "Tipline", desc: "Drop Facebook screenshots, extracts draft events and news." },
   { href: "/admin/announcements", icon: "campaign", title: "Announcements", desc: "The sticky banner at the top of every page." },
 ];
 

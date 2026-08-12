@@ -12,7 +12,7 @@ import { getPublishedAnswers } from "@/actions/answers";
 import { AnswerCard } from "@/components/answers/AnswerCard";
 
 export const metadata: Metadata = {
-  title: "Sutton Fields | The Unofficial Record — Celina, TX",
+  title: "Sutton Fields | The Unofficial Record: Celina, TX",
   description:
     "The independent, resident-run hub for Sutton Fields in Celina, Texas: neighborhood news, events, pool and trash status, classifieds, and straight answers about schools, taxes, roads, and the HOA.",
   alternates: { canonical: "https://suttonfields.info" },
@@ -31,7 +31,7 @@ const homeFaqs = [
   {
     question: "What school district is Sutton Fields in?",
     answer:
-      "Sutton Fields is served by Prosper ISD. Dan Christie Elementary School (PK-5) is located inside the community. Following Prosper ISD's 2025-26 rezoning, builder listings show Sutton Fields feeding Pete Moseley Middle School and Richland High School — verify your address on the district's attendance boundary map, as Prosper ISD adjusts zones almost every year.",
+      "Sutton Fields is served by Prosper ISD. Dan Christie Elementary School (PK-5) is located inside the community. Following Prosper ISD's 2025-26 rezoning, builder listings show Sutton Fields feeding Pete Moseley Middle School and Richland High School, verify your address on the district's attendance boundary map, as Prosper ISD adjusts zones almost every year.",
   },
   {
     question: "How much are Sutton Fields HOA dues?",

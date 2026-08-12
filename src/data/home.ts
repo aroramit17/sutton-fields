@@ -3,7 +3,7 @@ import type { QuickLink, NewsItem, SpotlightFeature } from "@/types";
 export const heroContent = {
   title: "Welcome to Sutton Fields",
   subtitle:
-    "A master-planned community in Celina, Texas — where neighborhood living meets modern convenience. Explore events, connect with local vendors, and stay up to date with your HOA.",
+    "A master-planned community in Celina, Texas, where neighborhood living meets modern convenience. Explore events, connect with local vendors, and stay up to date with your HOA.",
   backgroundImage:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuC8kZuYiuXks9jL0K8VuiH4iP9ylNcFVuZF3BNOliVz3rSawZ875eMENqbn5ws3KxkoLeoVHxhtDDxIy9JEh8Hg4iFxP408B0_hq3V9H6SlW7YIdg7G5psAS5d5siUIgefypER_FP3zUB3ktrF1iezykb_4-UqV0rhOUTHz-28VCu2otXq-kwcLpudbhqEhqu--q03mHwB1IfmoUlBHK8qO7pLubZ8GeDl031qgLbGXurM6B8lCo4Wuiqwu98EpubwI-QKhnxNj6aI",
 };
@@ -90,7 +90,7 @@ export const spotlight: SpotlightFeature = {
   name: "Dan Christie Elementary",
   title: "Dan Christie Elementary: Our Neighborhood School",
   description:
-    "Opened in 2023, Dan Christie Elementary is Prosper ISD's 17th elementary campus — built right inside Sutton Fields. Serving grades PK-5 with 760+ students, it earned a B rating from the Texas Education Agency. Having a top-rated school within walking distance is one of the reasons families choose Sutton Fields.",
+    "Opened in 2023, Dan Christie Elementary is Prosper ISD's 17th elementary campus, built right inside Sutton Fields. Serving grades PK-5 with 760+ students, it earned a B rating from the Texas Education Agency. Having a top-rated school within walking distance is one of the reasons families choose Sutton Fields.",
   image:
     "https://tocjzsvda27mz4mw.public.blob.vercel-storage.com/home/dan-christie-elementary-1786552763355.png",
   imageAlt: "Dan Christie Elementary School entrance in Prosper, Texas",

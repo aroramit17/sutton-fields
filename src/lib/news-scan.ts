@@ -42,11 +42,11 @@ function parseJsonArray(text: string): NewsHit[] {
   }
 }
 
-// Nightly: search the web for genuinely recent, hyper-local news and draft
-// each new one into the same unpublished-review queue as the admin
-// paste-a-URL flow. Never auto-publishes — open-web results are far less
-// trustworthy than the Wilson Weekly school newsletter, so this always
-// waits for a human to approve in /admin/news.
+// Nightly: search the web for genuinely recent, hyper-local news and publish
+// each new hit directly (owner decision Aug 2026: an empty news section costs
+// more than the small risk of an off-target story; the prompt's real-URL and
+// geography guardrails plus source_url dedup stay in force, and anything off
+// can be unpublished in /admin/news).
 export async function scanForLocalNews(): Promise<{ found: number; drafted: number }> {
   const openai = getOpenAI();
   const today = new Date().toISOString().slice(0, 10);
@@ -55,12 +55,12 @@ export async function scanForLocalNews(): Promise<{ found: number; drafted: numb
     model: TEXT_MODEL,
     tools: [{ type: "web_search" }],
     input:
-      `Today is ${today}. Search the web for REAL local news articles published within the last 2-3 days ` +
+      `Today is ${today}. Search the web for REAL local news articles published within the last 5 days ` +
       "that are directly relevant to residents of Sutton Fields, a neighborhood in Celina, Texas 75009, " +
       "located at 4600 Waugh Avenue. Prioritize stories from roughly a 5 mile radius: Celina city " +
       "government/council news, road/traffic/development news, public safety, Prosper ISD school news " +
-      "(especially Dan Christie Elementary, William Rushing Middle, or Prosper High), and community events. " +
-      "Only include articles you actually found via search with real, working URLs — never invent a URL or " +
+      "(especially Dan Christie Elementary, Moseley Middle School, or Richland High School), and community events. " +
+      "Only include articles you actually found via search with real, working URLs. Never invent a URL or " +
       "article. It is completely fine to return an empty list if nothing genuinely recent and relevant exists. " +
       `Classify each into one of: ${CATEGORIES.join(", ")}. ` +
       'Respond with ONLY a JSON array (no prose, no markdown fences), up to 5 items: ' +
@@ -85,7 +85,8 @@ export async function scanForLocalNews(): Promise<{ found: number; drafted: numb
       await draftArticleFromUrl(
         hit.url,
         CATEGORIES.includes(hit.category) ? hit.category : "Community",
-        null
+        null,
+        { publish: true }
       );
       drafted++;
     } catch (err) {

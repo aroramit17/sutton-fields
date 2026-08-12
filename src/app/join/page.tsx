@@ -126,7 +126,7 @@ export default function JoinPage() {
         </h1>
         <p className="text-on-surface-variant mb-8">
           {profile.is_approved
-            ? "Your resident account is verified — you can post to any community board."
+            ? "Your resident account is verified, you can post to any community board."
             : "Your account is being verified by a Sutton Fields admin. Check back soon!"}
         </p>
         <Button variant="secondary" href="/">

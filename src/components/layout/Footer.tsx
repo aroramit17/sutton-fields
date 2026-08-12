@@ -12,7 +12,7 @@ export function Footer() {
               Sutton Fields
             </div>
             <p className="font-headline italic text-sm text-on-surface-variant mb-3">
-              The unofficial record of Sutton Fields — Celina, Texas
+              The unofficial record of Sutton Fields, Celina, Texas
             </p>
             <p className="text-on-surface-variant text-sm leading-relaxed mb-4">
               An independent, resident-run site. Not affiliated with the HOA,
@@ -102,7 +102,7 @@ export function Footer() {
         </div>
         <div className="pt-8 bg-[linear-gradient(to_right,transparent,var(--color-outline-variant),transparent)] bg-[length:100%_1px] bg-no-repeat bg-top">
           <p className="text-on-surface-variant text-xs text-center">
-            &copy; {new Date().getFullYear()} suttonfields.info — an independent
+            &copy; {new Date().getFullYear()} suttonfields.info, an independent
             community site by and for Sutton Fields residents. Celina, TX 75009.
           </p>
         </div>

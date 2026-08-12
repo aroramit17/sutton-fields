@@ -445,7 +445,7 @@ export default function AdminAnswersPage() {
           <div key={r.id} className="bg-surface-container-lowest rounded-2xl p-4 flex items-center gap-4">
             <div className="flex-1 min-w-0">
               <p className="font-semibold text-on-surface truncate">
-                {r.name} <span className="text-on-surface-variant font-normal">— {r.status}</span>
+                {r.name} <span className="text-on-surface-variant font-normal">· {r.status}</span>
               </p>
               <p className="text-xs text-on-surface-variant">ETA {r.eta_text}</p>
             </div>

@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 import { navLinks } from "@/data/navigation";
 import { AuthButtons } from "./AuthButtons";
 import { Icon } from "@/components/ui/Icon";
-import { Dateline } from "@/components/ui/Dateline";
 
 const sectionUnderline: Record<string, { active: string; idle: string }> = {
   news: {
@@ -46,9 +45,7 @@ export function Navbar() {
       {/* Row 1: masthead */}
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 py-3 sm:py-4">
-          <div className="hidden sm:block">
-            <Dateline />
-          </div>
+          <div className="hidden sm:block" aria-hidden />
           {/* Mobile menu button occupies the left slot on small screens */}
           <button
             className="sm:hidden justify-self-start text-on-surface-variant"
@@ -64,7 +61,7 @@ export function Navbar() {
             </span>
             {isHome && (
               <span className="mt-1 hidden font-headline text-sm italic text-on-surface-variant sm:block">
-                The unofficial record of Sutton Fields — Celina, Texas
+                The unofficial record of Sutton Fields, Celina, Texas
               </span>
             )}
           </Link>

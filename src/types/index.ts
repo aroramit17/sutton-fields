@@ -27,10 +27,12 @@ export interface Vendor {
   id: string;
   name: string;
   description: string;
-  image: string;
-  imageAlt: string;
-  rating: number;
   category: string;
+  phone?: string;
+  website?: string;
+  image?: string;
+  imageAlt?: string;
+  rating?: number;
   verified?: boolean;
   residentOwned?: boolean;
 }

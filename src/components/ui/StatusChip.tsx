@@ -31,23 +31,31 @@ export function StatusChip({
   const body = (
     <span
       className={cn(
-        "inline-flex shrink-0 items-center gap-2 rounded-full border border-outline-variant bg-surface-container-lowest px-3.5 py-2",
+        "flex h-full w-full items-center gap-2.5 rounded-2xl border border-outline-variant bg-surface-container-lowest px-4 py-2.5",
         href && "transition-colors hover:border-outline",
         className
       )}
     >
-      <span className={cn("size-2 rounded-full", dotColor[tone])} aria-hidden />
-      <span className="dateline !text-on-surface-variant">{label}</span>
-      <span className="text-sm font-semibold text-on-surface">
-        {tone === "unknown" && !value ? "Status unknown" : value}
-      </span>
-      {note ? (
-        <span className="hidden text-xs text-on-surface-variant sm:inline">
-          {note}
+      <span className={cn("size-2 shrink-0 rounded-full", dotColor[tone])} aria-hidden />
+      <span className="min-w-0">
+        <span className="dateline block !text-on-surface-variant">{label}</span>
+        <span className="block truncate text-sm font-semibold leading-tight text-on-surface">
+          {tone === "unknown" && !value ? "Status unknown" : value}
         </span>
-      ) : null}
+        {note ? (
+          <span className="block truncate text-xs leading-tight text-on-surface-variant">
+            {note}
+          </span>
+        ) : null}
+      </span>
     </span>
   );
 
-  return href ? <Link href={href}>{body}</Link> : body;
+  return href ? (
+    <Link href={href} className="block h-full min-w-0">
+      {body}
+    </Link>
+  ) : (
+    <span className="block h-full min-w-0">{body}</span>
+  );
 }

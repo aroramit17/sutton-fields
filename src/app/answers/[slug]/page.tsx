@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const answer = await getAnswerBySlug(slug).catch(() => null);
   if (!answer) return { title: "Answer not found" };
   return {
-    title: `${answer.question} — Sutton Fields Answers`,
+    title: `${answer.question}: Sutton Fields Answers`,
     description: plainText(answer.answer).slice(0, 155),
     alternates: { canonical: `https://suttonfields.info/answers/${answer.slug}` },
   };
@@ -81,7 +81,7 @@ export default async function AnswerPage({ params }: Props) {
 
       <p className="hairline mt-10 pt-6 text-sm text-on-surface-variant">
         Spotted something outdated? This page was last verified on the date
-        above — flag corrections in the{" "}
+        above. Flag corrections in the{" "}
         <a
           href="https://www.facebook.com/groups/suttonfields"
           target="_blank"

@@ -29,19 +29,20 @@ export const communityOverview = {
   distanceFromDenton: "21 miles",
 };
 
+// Roster per the Aug 2026 research pass (docs/superpowers/research/):
+// active + past Sutton Fields builders only. Taylor Morrison builds the
+// adjacent Yardly rental community, not Sutton Fields proper.
 export const builders = [
-  { name: "D.R. Horton", website: "https://www.drhorton.com/texas/dallas/celina/sutton-fields" },
   { name: "First Texas Homes", website: "https://www.firsttexashomes.com/communities/Sutton-Fields-113533" },
-  { name: "Lennar", website: "#" },
+  { name: "Lennar", website: "https://www.lennar.com" },
   { name: "Mattamy Homes", website: "https://mattamyhomes.com/texas/dallas-fort-worth/celina/sutton-fields" },
   { name: "M/I Homes", website: "https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/celina/lily-creek-at-sutton-fields" },
   { name: "Bloomfield Homes", website: "https://www.bloomfieldhomes.com/new-homes/tx/celina/sutton-fields/" },
-  { name: "Pacesetter Homes", website: "#" },
-  { name: "Sandlin Homes", website: "#" },
-  { name: "Stonehollow Homes", website: "#" },
-  { name: "Taylor Morrison", website: "#" },
-  { name: "Beazer Homes", website: "#" },
-  { name: "William Ryan Homes", website: "#" },
+  { name: "Pacesetter Homes", website: "https://www.pacesetterhomestexas.com" },
+  { name: "Sandlin Homes", website: "https://www.sandlinhomes.com" },
+  { name: "Stonehollow Homes", website: "https://www.stonehollowhomes.com" },
+  { name: "D.R. Horton (sold out)", website: "https://www.drhorton.com/texas/dallas/celina/sutton-fields" },
+  { name: "Beazer Homes (early phases)", website: "https://www.beazer.com" },
 ];
 
 export const hoaDetails = {
@@ -98,7 +99,7 @@ export const amenities: Amenity[] = [
     icon: "water_drop",
     name: "Splash Pad",
     description:
-      "Kid-friendly splash pad area at the Amenity Center — perfect for toddlers and young children to enjoy on hot Texas days.",
+      "Kid-friendly splash pad area at the Amenity Center, perfect for toddlers and young children to enjoy on hot Texas days.",
     hours: "Seasonal (May - September)",
     status: "seasonal",
   },
@@ -142,7 +143,7 @@ export const amenities: Amenity[] = [
     icon: "local_fire_department",
     name: "Fire Pit & Gathering Area",
     description:
-      "Community fire pit area at the Amenity Center — perfect for evening gatherings, marshmallow roasts, and neighborhood socializing.",
+      "Community fire pit area at the Amenity Center, perfect for evening gatherings, marshmallow roasts, and neighborhood socializing.",
     status: "open",
   },
 ];
@@ -265,7 +266,7 @@ export const communityResources: CommunityResource[] = [
   },
   {
     icon: "phone",
-    title: "HOA Management — Essex",
+    title: "HOA Management, Essex",
     description:
       "Essex Association Management: 972-428-2030. After-hours emergency: 1-888-740-2233. Office at 4570 Westgrove Dr, Addison.",
     href: "https://suttonfieldshoa.com/contact-us.aspx",

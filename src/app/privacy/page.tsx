@@ -15,7 +15,7 @@ const sections = [
   },
   {
     title: "Admin access",
-    body: "Site admins can approve or reject new resident accounts and can remove posts that violate community guidelines. Admins do not have access to your account password — sign-in is handled entirely by Clerk.",
+    body: "Site admins can approve or reject new resident accounts and can remove posts that violate community guidelines. Admins do not have access to your account password, sign-in is handled entirely by Clerk.",
   },
   {
     title: "How long we keep it",

@@ -1,90 +1,253 @@
 import type { Vendor } from "@/types";
 
+// Real vendors compiled from the Sutton Fields residents' shared
+// service-contracts spreadsheet and Facebook group recommendation threads
+// (Aug 2026). Recommender names are deliberately omitted; pricing notes are
+// what residents reported at the time and will drift. The Directory page
+// shows a do-your-own-verification disclaimer.
+
 export const vendorCategories = [
   "All",
-  "Home Services",
-  "Irrigation & Sprinkler",
-  "HVAC",
-  "Plumbing",
+  "Lawn & Landscape",
+  "Pest Control",
   "Electrical",
-  "Flooring & Concrete",
-  "Lightning Protection",
-  "Food & Dining",
-  "Babysitting",
-  "Tutoring & Lessons",
-  "Pet Care",
+  "Handyman",
+  "Home Inspection",
+  "Garage & Floors",
+  "Cleaning",
+  "Water Softeners",
+  "Events & Rentals",
+  "Photography & Decor",
+  "Classes",
+  "Real Estate & Notary",
+  "Wildlife",
 ];
-
-export const vendorPageContent = {
-  label: "Neighborhood Directory",
-  title: "Trusted local experts for your home.",
-  description:
-    "Connect with community-vetted vendors serving Sutton Fields and the Celina, TX area. From landscapers to pet sitters, find trusted help right in your neighborhood.",
-};
 
 export const vendors: Vendor[] = [
   {
-    id: "evergreen-estates",
-    name: "Evergreen Estates",
+    id: "military-lawn-cuts",
+    name: "Military Lawn Cuts",
+    category: "Lawn & Landscape",
+    website: "https://www.militarylawncuts.com",
     description:
-      "Expert lawn maintenance and landscape design tailored for Sutton Fields terrain. Serving the Celina and Prosper area since 2012.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBO3C2c2doB3K2qGTtkBc1nj3ArPAfCbcfVbvgcBAx85tqJuQtxnywXTcr6LpFxiqPsbLpJF0poD5L7IvRlPk9a3WZyHc6hTlu0J5W1am5LpmXlh80kwqFjV2J8GMLZUb9zxiCFyXgCod2fy3Dyb5q-S90DckVR8XtT4u8HNUTSWrJpx2mqdzedRvAtBA0mFamuquX9jPv1grFfbjD5Jux6GTuibD8D7a78BpnNdrWmCI4cflHH4ma8C1xnnfNvASJUVXaL-pEcJew",
-    imageAlt:
-      "Professional landscaping team working in Sutton Fields, Celina TX",
-    rating: 4.9,
-    category: "Home Services",
-    verified: true,
+      "Fertilization and weed control. Residents report about $97 per round including tax on an 8-round yearly program.",
   },
   {
-    id: "the-flour-mill",
-    name: "The Flour Mill",
-    description:
-      "Small-batch artisan bakery specializing in organic sourdough and seasonal pastries. Owned by a Sutton Fields resident — delivered fresh to your door.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBbFkcDf2U1E8lZ80sW1Pl4SrSn_xjyct5ExKARzPC1-wNK8qjC_XJPocZ12Lynglln6qaRsyoTI2s7uN8N0XQD_5YcGvrUjDq2kx118rRDnwKYE1rwRgxEH21I-O21ij36K9dohksXQN5gPhl7BJv3r5fImFv0R12YesqOwAU3jz7--9AC6FEi3seZ6eC1Q2u_OgKsb8p0rTa6TNilVGW4WwwDIKM_qCuf6-cpxhXXUH3sLXZhk6gvpbzp8IVyKNeV2QhRti6-gZ8",
-    imageAlt:
-      "Artisan bread and pastries from a Sutton Fields resident-owned bakery",
-    rating: 5.0,
-    category: "Food & Dining",
-    residentOwned: true,
+    id: "emmanuel-gomez-lawn",
+    name: "Emmanuel Gomez Lawn Care",
+    category: "Lawn & Landscape",
+    phone: "214-529-8723",
+    description: "Lawn mowing recommended by Sutton Fields neighbors.",
   },
   {
-    id: "paws-and-paths",
-    name: "Paws & Paths",
+    id: "cipriano-alvarez",
+    name: "Cipriano Alvarez",
+    category: "Lawn & Landscape",
+    phone: "214-286-2923",
     description:
-      "Reliable dog walking and in-home pet sitting on the Sutton Fields trails. CPR certified and community recommended.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCOHpvvQDXd7y7zFqIqspMWq9hZ2mYu4JrNn8tR47g6EGkVhhjwQn0qFcINaTWMEFQ_bYuz_7sDrhlTyLVeyqAe_8AvYatKafG9f-icZVxDJ6TfAgAGKnPTWgN9OZJCU_c1WT1N8BuF167rBnw6hsJo34JZUXS_49Fz5_R_RtNaJcVw9v17e-L2uV1N_Xw02-NYlTvrZMLCJI95c-VP8sVXcRyENhHbHxCO8bCp8knEDhLSqY0h_AMNc1GmJ4O5mlRdoiLBFgb-bMI",
-    imageAlt:
-      "Dog walker on Sutton Fields walking trail in Celina, Texas",
-    rating: 4.8,
-    category: "Pet Care",
+      "Flower bed construction and landscaping. A resident reported a front-yard flower bed with two trees for $1,200, built on a cement foundation to resist cracking.",
   },
   {
-    id: "sutton-spark",
-    name: "Sutton Spark",
+    id: "safe-tech-pest",
+    name: "Safe Tech Pest Control",
+    category: "Pest Control",
+    phone: "972-330-2888",
     description:
-      "Licensed residential electricians for all your smart home installations and repairs. Serving Sutton Fields and greater Celina area.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCN4rvYvAk8TCUeBZEViBtEApy0cnV4Cpe0A-TkXus_OlLQJJzbt8OvmZVtbGIxb_iLgwgm-75KAaPB-dTk91vz2dsti6jvfI1eohz0uMsmHjhQvlseRA9CAvXh18yOOSOJnN93aCFVcP0wPwvSRAg0mV-2Eyv1t4GY2AGimgFujFcjrRiJcJFn-4_AnhkmgXR8lHLBecES6zIukebAGVuixKGcjb6vjuWkHXKVgMlYwBLv58NM_czSyfszHkxyoqO6WHi2THjHxQw",
-    imageAlt:
-      "Electrician working on smart home installation in Sutton Fields",
-    rating: 4.7,
-    category: "Home Services",
-    verified: true,
+      "Quarterly pest control; ask for James. Residents report about $107 per visit including tax on an every-3-months plan.",
   },
   {
-    id: "village-sitters",
-    name: "Village Sitters",
+    id: "clutch-pest",
+    name: "Clutch Pest Control",
+    category: "Pest Control",
+    phone: "214-620-0992",
+    description: "Pest control recommended by Sutton Fields neighbors.",
+  },
+  {
+    id: "mm-general-services",
+    name: "M&M General Services (Marcello)",
+    category: "Electrical",
+    phone: "972-480-2742",
     description:
-      "Trusted Sutton Fields neighborhood students and parents offering evening and weekend childcare. Background-checked and community-vetted.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCjbiQCmCyQlr07KayekWfPne0EG58sNdPdouiJtaf7UDFg5WY-gEI0qEkzw3DwrLwhzmB_uYD6Ghdm9w9_dJwA-c0Rrci8OProKf3U-ifnXNPcTPfSnJ8FMemCeOebcsmtcytyQiVjfA6EI7o0rZHZhTX8ofcOVHkbDtDY4AuvXKDCrX-S3ovxrDDRtytMh76GjCMii-PivZ4vKLxMe5EoFL2Xt8RtqYmbT3Q_NNpbkXnz0u68oqUu65VYEECTPMjIcy1_NuPjqjE",
-    imageAlt:
-      "Childcare provider with children at a Sutton Fields home in Celina",
-    rating: 4.9,
-    category: "Babysitting",
-    residentOwned: true,
+      "Electrician praised for quick responses and fair pricing. One resident's Eaton breaker swap came in at $79 against a $160 quote elsewhere.",
+  },
+  {
+    id: "edwin-electric",
+    name: "Edwin",
+    category: "Electrical",
+    phone: "469-576-0692",
+    description:
+      "Electrician neighbors have used for several small projects at reasonable prices with good quality.",
+  },
+  {
+    id: "jcr-electricals",
+    name: "JCR Electricals (Ivan)",
+    category: "Electrical",
+    phone: "214-875-3128",
+    description:
+      "Electrical work plus window blind installation. Residents describe quick responses, reasonable pricing, and flawless work.",
+  },
+  {
+    id: "philip-romero",
+    name: "Philip Romero",
+    category: "Handyman",
+    phone: "209-603-8077",
+    description: "Handyman charging by the hour, about $65/hr per resident reports.",
+  },
+  {
+    id: "douglas-handyman",
+    name: "Douglas",
+    category: "Handyman",
+    phone: "214-687-7468",
+    description:
+      "Handyman and carpentry. A resident reported a staircase half-wall-to-railing conversion for $1,400 including materials, with nice results.",
+  },
+  {
+    id: "venkat-handyman",
+    name: "Venkat",
+    category: "Handyman",
+    phone: "864-553-5094",
+    description:
+      "Water softener installs, TV wall mounts, patio extensions, and custom woodwork including cupboards, closets, and puja mandirs.",
+  },
+  {
+    id: "gilberto-alonso-epoxy",
+    name: "Gilberto Alonso",
+    category: "Garage & Floors",
+    phone: "214-395-8575",
+    description: "Garage floor epoxy, recommended through the Facebook group.",
+  },
+  {
+    id: "flavio-epoxy",
+    name: "Flavio",
+    category: "Garage & Floors",
+    phone: "214-978-7309",
+    description:
+      "Garage floor epoxy; quoted a resident about $1,200 for a 2-car garage.",
+  },
+  {
+    id: "garage-door-repair",
+    name: "Garage Door Repair",
+    category: "Garage & Floors",
+    phone: "214-728-3555",
+    description:
+      "Garage door repair. A resident reported very good work at a lower quote than competitors.",
+  },
+  {
+    id: "ron-lane-inspection",
+    name: "Ron Lane",
+    category: "Home Inspection",
+    phone: "972-742-9978",
+    description:
+      "Home inspection: about $400 for a 2,700 sqft home including sprinkler check and thermal imaging.",
+  },
+  {
+    id: "stephen-inspection",
+    name: "Stephen",
+    category: "Home Inspection",
+    phone: "214-417-0782",
+    description: "Home inspector who provides a detailed report of issues found.",
+  },
+  {
+    id: "home-inspectors-tx",
+    name: "The Home Inspectors TX",
+    category: "Home Inspection",
+    website: "https://thehomeinspectorstx.com/",
+    description:
+      "One resident's inspector spent 6 hours and delivered a 40-page report with images that went straight to the builder's punch list. Charged by square footage under roof.",
+  },
+  {
+    id: "lorena-cleaning",
+    name: "Lorena",
+    category: "Cleaning",
+    phone: "972-822-4634",
+    description:
+      "Home cleaning; also offers free notary service to the community.",
+  },
+  {
+    id: "cleaning-sisters",
+    name: "Cleaning Sisters",
+    category: "Cleaning",
+    phone: "469-235-5534",
+    description: "Home cleaning recommended by Sutton Fields neighbors.",
+  },
+  {
+    id: "randy-water-softener",
+    name: "Randy",
+    category: "Water Softeners",
+    phone: "832-466-7723",
+    description: "Water softener sales and installation, recommended by many group members.",
+  },
+  {
+    id: "prabhakar-rentals",
+    name: "Prabhakar Party Rentals",
+    category: "Events & Rentals",
+    phone: "651-278-8768",
+    description:
+      "One stop for party rentals: chairs, tables, lights, fans, canopies, heaters, and table cloths. Many residents report very good service.",
+  },
+  {
+    id: "venu-rentals",
+    name: "Venu",
+    category: "Events & Rentals",
+    phone: "469-592-9262",
+    description:
+      "Chairs and tables: about $1 per chair and $8 per table, delivery extra. Professional and on time per residents.",
+  },
+  {
+    id: "chandu-rentals",
+    name: "Chandu",
+    category: "Events & Rentals",
+    phone: "410-422-2034",
+    description:
+      "Rentals: $1 chairs, $7 round tables, $5 serving tables, chair covers with bows, table cloths and runners. Delivery extra.",
+  },
+  {
+    id: "jp-photography",
+    name: "JP Photography",
+    category: "Photography & Decor",
+    phone: "201-685-2494",
+    website: "https://www.facebook.com/portraitsbyjp",
+    description:
+      "Event photography: housewarmings, birthdays, family portraits, baby showers, and newborn sessions.",
+  },
+  {
+    id: "madhu-latha-decor",
+    name: "Madhu Latha",
+    category: "Photography & Decor",
+    phone: "214-454-6816",
+    description:
+      "Party decorations. A resident describes creative, reasonably priced decor for a baby shower and birthday party.",
+  },
+  {
+    id: "mayin-by-asha",
+    name: "Mayin Events by Asha",
+    category: "Photography & Decor",
+    phone: "505-675-0682",
+    website: "https://instagram.com/mayin_by_asha",
+    description: "Event decoration for parties and celebrations.",
+  },
+  {
+    id: "himanshi-yoga",
+    name: "Himanshi Yoga",
+    category: "Classes",
+    phone: "267-437-8452",
+    description:
+      "Yoga classes for adults, including prenatal and postnatal, plus classes for kids.",
+  },
+  {
+    id: "venkata-vejandla",
+    name: "Venkata Vejandla",
+    category: "Real Estate & Notary",
+    phone: "469-901-6945",
+    description:
+      "Realtor and lending services; residents call him a strong cash-back realtor for the area. Also provides notary service.",
+  },
+  {
+    id: "anmol-snake",
+    name: "Anmol (Snake Catcher)",
+    category: "Wildlife",
+    phone: "817-760-9317",
+    description:
+      "Snake removal. Good number to have saved in a Texas summer.",
   },
 ];

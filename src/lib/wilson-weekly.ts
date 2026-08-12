@@ -110,7 +110,7 @@ async function extractEventsFromText(text: string, referenceDate: string): Promi
     input:
       `This is the plain text of a Prosper ISD elementary school "Wilson Weekly" newsletter email, sent on ${referenceDate}. ` +
       "Extract every specific dated event, deadline, or activity mentioned (e.g. school holidays, assemblies, spirit days, form deadlines, meetings). " +
-      `Resolve partial dates like "August 20th" using the school year implied by the email's send date (${referenceDate}) — if a date's month/day would fall in the current school year (roughly this send date through the following summer), use that year, not a later one. ` +
+      `Resolve partial dates like "August 20th" using the school year implied by the email's send date (${referenceDate}), if a date's month/day would fall in the current school year (roughly this send date through the following summer), use that year, not a later one. ` +
       "Skip generic non-dated calls to action (like \"visit our website\") that have no specific date attached. " +
       JSON_INSTRUCTIONS +
       "\n\nNewsletter text:\n" +
@@ -161,7 +161,7 @@ async function extractEventsFromImages(
         text:
           `These images are from a Prosper ISD elementary school "Wilson Weekly" newsletter email, sent on ${referenceDate}. ` +
           "Look at each image. Only report images that show a calendar, list of school holidays/breaks, or an event schedule with dates. " +
-          `Ignore logos, photos, maps, icons, and decorative graphics. Resolve partial dates using the school year implied by this send date (${referenceDate}) — a month/day within the current school year (this send date through the following summer) should use that year, not a later one. ` +
+          `Ignore logos, photos, maps, icons, and decorative graphics. Resolve partial dates using the school year implied by this send date (${referenceDate}), a month/day within the current school year (this send date through the following summer) should use that year, not a later one. ` +
           "For date RANGES (e.g. a holiday break), use the first day as event_date and mention the full range in the description. " +
           JSON_INSTRUCTIONS,
       },

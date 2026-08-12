@@ -25,7 +25,7 @@ export async function AroundTheNeighborhood() {
           </div>
           {listings.length === 0 ? (
             <p className="py-4 text-sm text-on-surface-variant">
-              Nothing listed right now — verified residents can post anytime.
+              Nothing listed right now. Verified residents can post anytime.
             </p>
           ) : (
             <ul>

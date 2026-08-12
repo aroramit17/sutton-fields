@@ -13,10 +13,10 @@ import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 
 const CHIPS: { key: BoardKey; label: string; hint: string }[] = [
-  { key: "pool", label: "Pool", hint: 'e.g. "Open" / "Closed — contamination"' },
+  { key: "pool", label: "Pool", hint: 'e.g. "Open" / "Closed, contamination"' },
   { key: "trash", label: "Trash", hint: 'e.g. "Wednesdays" + note for next Clean Sweep' },
   { key: "water", label: "Water", hint: 'e.g. "Stage 2" + note "$500+ fines"' },
-  { key: "roads", label: "Roads", hint: 'e.g. "DNT 4A paving — opens late 2027"' },
+  { key: "roads", label: "Roads", hint: 'e.g. "DNT 4A paving, opens late 2027"' },
 ];
 
 const TONES: BoardTone[] = ["ok", "warn", "alert", "unknown"];

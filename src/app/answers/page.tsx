@@ -4,7 +4,7 @@ import { AnswerCard, CATEGORY_LABELS } from "@/components/answers/AnswerCard";
 import { PageHeader } from "@/components/layout/PageHeader";
 
 export const metadata: Metadata = {
-  title: "Answers — Straight Facts About Living in Sutton Fields",
+  title: "Answers: Straight Facts About Living in Sutton Fields",
   description:
     "Canonical, sourced, regularly verified answers to the questions Sutton Fields residents actually ask: property taxes and the PID, school zoning, road construction timelines, HOA processes, trash and watering rules, and more.",
   alternates: { canonical: "https://suttonfields.info/answers" },
@@ -22,12 +22,12 @@ export default async function AnswersPage() {
       <PageHeader
         label="Answers"
         title="The questions everyone asks, answered once."
-        description="Sourced, dated, and re-verified — built to be pasted into the Facebook group whenever the question comes up again. Spot something outdated? Every page shows when it was last checked."
+        description="Sourced, dated, and re-verified, built to be pasted into the Facebook group whenever the question comes up again. Spot something outdated? Every page shows when it was last checked."
       />
 
       {answers.length === 0 ? (
         <p className="py-12 text-center text-on-surface-variant">
-          Answers are being written — check back shortly.
+          Answers are being written, check back shortly.
         </p>
       ) : (
         <div className="space-y-12">

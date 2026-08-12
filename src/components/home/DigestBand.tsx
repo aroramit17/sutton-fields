@@ -19,11 +19,11 @@ export function DigestBand() {
         setState("done");
       } else {
         setState("error");
-        setError(result.error ?? "Something went wrong — try again.");
+        setError(result.error ?? "Something went wrong, try again.");
       }
     } catch {
       setState("error");
-      setError("Something went wrong — try again.");
+      setError("Something went wrong, try again.");
     }
   }
 

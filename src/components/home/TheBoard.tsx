@@ -29,9 +29,11 @@ export async function TheBoard() {
     getNextSchoolEvent().catch(() => null),
   ]);
 
+  // Equal-size cells that wrap to a second row rather than a scroll strip —
+  // ragged pill widths read as misalignment.
   return (
     <section aria-label="Neighborhood status" className="border-b border-outline-variant bg-surface-container-low">
-      <div className="mx-auto flex max-w-7xl items-center gap-2.5 overflow-x-auto px-4 py-3 scrollbar-none sm:px-8">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-2.5 px-4 py-3 sm:px-8 md:grid-cols-3 lg:grid-cols-5">
         {CHIP_ORDER.map(({ key, label }) => {
           const chip = status[key];
           const data = chip ?? fallback(key);
@@ -49,11 +51,12 @@ export async function TheBoard() {
         {schoolEvent && (
           <StatusChip
             label="School"
-            value={`${new Date(schoolEvent.event_date).toLocaleDateString("en-US", {
+            value={schoolEvent.title}
+            note={new Date(schoolEvent.event_date).toLocaleDateString("en-US", {
               month: "short",
               day: "numeric",
               timeZone: "UTC",
-            })} · ${schoolEvent.title}`}
+            })}
             tone="ok"
             href="/events"
           />

@@ -17,12 +17,12 @@ import {
 } from "@/components/seo/StructuredData";
 
 export const metadata: Metadata = {
-  title: "New Here? — The Sutton Fields Starter Guide",
+  title: "New Here?: The Sutton Fields Starter Guide",
   description:
     "Moving to Sutton Fields in Celina, TX? Schools (Prosper ISD, Dan Christie Elementary on-site), amenities, HOA details, utility setup, builders, and everything else newcomers and homebuyers need in one place.",
   alternates: { canonical: "https://suttonfields.info/new-here" },
   openGraph: {
-    title: "New to Sutton Fields? Start Here — Celina, TX",
+    title: "New to Sutton Fields? Start Here: Celina, TX",
     description:
       "The starter guide for Sutton Fields newcomers and homebuyers: schools, amenities, HOA, utilities, and neighborhood resources.",
   },
@@ -42,12 +42,12 @@ const newHereFaqs = [
   {
     question: "What builders offer homes in Sutton Fields?",
     answer:
-      "Sutton Fields features homes from builders including First Texas Homes, Lennar, Mattamy Homes, M/I Homes, Bloomfield Homes, Pacesetter Homes, Sandlin Homes, Stonehollow Homes, and, in earlier phases, D.R. Horton and Beazer Homes — roughly 2,350 homes planned at buildout.",
+      "Sutton Fields features homes from builders including First Texas Homes, Lennar, Mattamy Homes, M/I Homes, Bloomfield Homes, Pacesetter Homes, Sandlin Homes, Stonehollow Homes, and, in earlier phases, D.R. Horton and Beazer Homes, roughly 2,350 homes planned at buildout.",
   },
   {
     question: "Is there a community pool at Sutton Fields?",
     answer:
-      "Yes — two resort-style swimming pools with cabanas, a dedicated lap pool, and a splash pad, centered on the Amenity Center at 4515 Westminster Ave (open seasonally). A second amenity center is under construction at 5512 Liverpool.",
+      "Yes, two resort-style swimming pools with cabanas, a dedicated lap pool, and a splash pad, centered on the Amenity Center at 4515 Westminster Ave (open seasonally). A second amenity center is under construction at 5512 Liverpool.",
   },
   {
     question: "What is the Sutton Fields expansion?",
@@ -71,7 +71,7 @@ export default function NewHerePage() {
         <PageHeader
           label="New Here?"
           title="Welcome to the neighborhood."
-          description="Whether you just closed or you're still house-hunting: schools, amenities, HOA details, utility setup, and the five things to do in your first few weeks — all in one place."
+          description="Whether you just closed or you're still house-hunting: schools, amenities, HOA details, utility setup, and the five things to do in your first few weeks, all in one place."
         />
       </div>
 

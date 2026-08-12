@@ -65,7 +65,7 @@ function ClassifiedsContent() {
         description={
           isSale
             ? "Post items for sale, find deals from your Sutton Fields neighbors, or trade goods right in the community. All listings expire after 48 hours."
-            : "Lost a pet or a package? Found something on the trail? Post it here — posts expire automatically."
+            : "Lost a pet or a package? Found something on the trail? Post it here, posts expire automatically."
         }
         ctaLabel={isSale ? "Post a Listing" : "Post Lost & Found"}
         ctaIcon="add_circle"

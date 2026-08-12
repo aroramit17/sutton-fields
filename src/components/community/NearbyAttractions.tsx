@@ -46,27 +46,27 @@ export function NearbyAttractions() {
               <ul className="space-y-1">
                 <li className="flex items-center gap-2">
                   <Icon name="directions_car" className="text-primary text-sm" />
-                  Dallas North Tollway — direct route to Dallas/Frisco
+                  Dallas North Tollway: direct route to Dallas/Frisco
                 </li>
                 <li className="flex items-center gap-2">
                   <Icon name="directions_car" className="text-primary text-sm" />
-                  US Highway 380 — east-west corridor to McKinney &amp; Denton
+                  US Highway 380: east-west corridor to McKinney &amp; Denton
                 </li>
                 <li className="flex items-center gap-2">
                   <Icon name="directions_car" className="text-primary text-sm" />
-                  Preston Road (FM 1385) — local north-south artery
+                  Preston Road (FM 1385): local north-south artery
                 </li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold text-on-surface mb-2">Distances</h4>
               <ul className="space-y-1">
-                <li>Frisco — 15 minutes</li>
-                <li>McKinney — 21 miles</li>
-                <li>Denton — 21 miles</li>
-                <li>Downtown Dallas — 40 minutes</li>
-                <li>Toyota HQ (Plano) — 25 minutes</li>
-                <li>DFW Airport — 45 minutes</li>
+                <li>Frisco: 15 minutes</li>
+                <li>McKinney: 21 miles</li>
+                <li>Denton: 21 miles</li>
+                <li>Downtown Dallas: 40 minutes</li>
+                <li>Toyota HQ (Plano): 25 minutes</li>
+                <li>DFW Airport: 45 minutes</li>
               </ul>
             </div>
           </div>

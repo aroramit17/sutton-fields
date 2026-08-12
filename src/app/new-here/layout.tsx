@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Newcomer Guide — Sutton Fields",
+  title: "Newcomer Guide: Sutton Fields",
   description:
     "New to Sutton Fields in Celina, TX? A step-by-step guide to joining the community Facebook group, registering with the HOA, getting pool access, and connecting with your school.",
   alternates: { canonical: "https://suttonfields.info/newcomer-guide" },
