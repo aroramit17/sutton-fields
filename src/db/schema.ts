@@ -6,6 +6,7 @@ import {
   numeric,
   integer,
   uuid,
+  unique,
 } from "drizzle-orm/pg-core";
 
 // JS property names are snake_case on purpose, matching src/types/database.ts
@@ -116,6 +117,22 @@ export const wilson_weekly_processed = pgTable("wilson_weekly_processed", {
   events_created: integer("events_created").notNull().default(0),
   processed_at: timestamp("processed_at", { withTimezone: true }).notNull().defaultNow(),
 });
+
+// "Recommended by N verified residents" on Directory cards. vendor_id is the
+// static slug from src/data/vendors.ts (vendors aren't DB rows yet); the
+// unique pair keeps it one endorsement per resident per vendor.
+export const vendor_endorsements = pgTable(
+  "vendor_endorsements",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    vendor_id: text("vendor_id").notNull(),
+    profile_id: text("profile_id")
+      .notNull()
+      .references(() => profiles.id, { onDelete: "cascade" }),
+    created_at: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [unique().on(t.vendor_id, t.profile_id)]
+);
 
 // The Thursday Dispatch mailing list. Deliberately not tied to profiles —
 // digest signup is single opt-in with no account, lower friction than

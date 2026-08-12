@@ -1,16 +1,53 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useAuth } from "@/context/AuthContext";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { VendorSearch } from "@/components/vendors/VendorSearch";
 import { VendorGrid } from "@/components/vendors/VendorGrid";
 import { vendors } from "@/data/vendors";
 import { otherChannels } from "@/data/groups";
 import { Icon } from "@/components/ui/Icon";
+import {
+  getMyEndorsementContext,
+  endorseVendor,
+  unendorseVendor,
+  type EndorsementSummary,
+} from "@/actions/endorsements";
 
 export default function DirectoryPage() {
+  const { profile } = useAuth();
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
+  const [endorsements, setEndorsements] = useState<Record<string, EndorsementSummary>>({});
+
+  const fetchEndorsements = useCallback(async () => {
+    try {
+      const ctx = await getMyEndorsementContext();
+      setEndorsements(ctx.endorsements);
+    } catch {
+      setEndorsements({});
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchEndorsements();
+  }, [fetchEndorsements]);
+
+  async function handleToggleEndorse(vendorId: string, endorsed: boolean) {
+    try {
+      if (endorsed) {
+        await unendorseVendor(vendorId);
+      } else {
+        await endorseVendor(vendorId);
+      }
+      fetchEndorsements();
+    } catch {
+      // requireApprovedProfile throws for unapproved users; the button only
+      // shows for approved profiles, so this is a rare race — refetch anyway.
+      fetchEndorsements();
+    }
+  }
 
   const filteredVendors = vendors.filter((vendor) => {
     const matchesSearch =
@@ -34,7 +71,12 @@ export default function DirectoryPage() {
         onFilterChange={setActiveFilter}
         activeFilter={activeFilter}
       />
-      <VendorGrid vendors={filteredVendors} />
+      <VendorGrid
+        vendors={filteredVendors}
+        endorsements={endorsements}
+        canEndorse={!!profile?.is_approved}
+        onToggleEndorse={handleToggleEndorse}
+      />
 
       {/* Groups & Rides */}
       <section className="mt-16">
