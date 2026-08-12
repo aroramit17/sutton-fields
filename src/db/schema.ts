@@ -128,6 +128,37 @@ export const subscribers = pgTable("subscribers", {
   unsubscribed_at: timestamp("unsubscribed_at", { withTimezone: true }),
 });
 
+// The Answers library — canonical, dated, sourced answer pages for the
+// questions residents ask over and over on Facebook. last_verified_at is the
+// credibility mechanic: it renders on every page and the nightly staleness
+// sentinel flags anything older than 90 days.
+export const answers = pgTable("answers", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  slug: text("slug").notNull().unique(),
+  question: text("question").notNull(),
+  answer: text("answer").notNull(), // markdown (escaped-HTML rendering only)
+  category: text("category", {
+    enum: ["money", "schools", "roads", "hoa", "living"],
+  }).notNull(),
+  sources: text("sources").notNull().default("[]"), // JSON [{title,url,date}]
+  last_verified_at: timestamp("last_verified_at", { withTimezone: true }).notNull().defaultNow(),
+  is_published: boolean("is_published").notNull().default(false),
+  created_at: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+// Rows on the "when does the traffic get fixed" tracker. Small, admin-curated,
+// updated when a project hits the news; last_updated shows per-row freshness.
+export const road_projects = pgTable("road_projects", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  name: text("name").notNull(),
+  status: text("status").notNull(),
+  eta_text: text("eta_text").notNull(),
+  detail: text("detail"),
+  source_url: text("source_url"),
+  sort: integer("sort").notNull().default(0),
+  last_updated: timestamp("last_updated", { withTimezone: true }).notNull().defaultNow(),
+});
+
 // Homepage "Board" utility chips (pool / trash / water / roads). Key-value by
 // design: chips are few, fixed, and admin-curated; the school chip is derived
 // from events at render time rather than stored here.
