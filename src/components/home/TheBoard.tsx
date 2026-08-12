@@ -1,6 +1,7 @@
 import { getBoardStatus, type BoardChip, type BoardKey } from "@/actions/board";
 import { getNextSchoolEvent } from "@/actions/events";
 import { StatusChip } from "@/components/ui/StatusChip";
+import { getTrashChip } from "@/data/trash";
 
 const CHIP_ORDER: { key: BoardKey; label: string }[] = [
   { key: "pool", label: "Pool" },
@@ -10,6 +11,10 @@ const CHIP_ORDER: { key: BoardKey; label: string }[] = [
 ];
 
 function fallback(key: BoardKey): Pick<BoardChip, "value" | "tone" | "note"> {
+  // Trash is deterministic (every Monday + published bulk calendar), so its
+  // default is computed rather than "unknown"; an admin row still overrides
+  // it for holiday-shift weeks.
+  if (key === "trash") return getTrashChip();
   return {
     value: "Status unknown",
     tone: "unknown",
