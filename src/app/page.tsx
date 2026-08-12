@@ -8,6 +8,8 @@ import { DigestBand } from "@/components/home/DigestBand";
 import { WeekEventList } from "@/components/events/WeekEventList";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { FAQStructuredData } from "@/components/seo/StructuredData";
+import { getPublishedAnswers } from "@/actions/answers";
+import { AnswerCard } from "@/components/answers/AnswerCard";
 
 export const metadata: Metadata = {
   title: "Sutton Fields | The Unofficial Record — Celina, TX",
@@ -53,7 +55,9 @@ const homeFaqs = [
   },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const topAnswers = (await getPublishedAnswers().catch(() => [])).slice(0, 4);
+
   return (
     <>
       <FAQStructuredData faqs={homeFaqs} />
@@ -79,6 +83,30 @@ export default function HomePage() {
           <WeekEventList limit={6} />
         </div>
       </section>
+
+      {/* Answers */}
+      {topAnswers.length > 0 && (
+        <section className="mx-auto max-w-7xl px-4 py-12 sm:px-8">
+          <div className="hairline flex items-end justify-between pt-6">
+            <div>
+              <SectionLabel section="answers" className="!mb-1">
+                Answers
+              </SectionLabel>
+              <h2 className="font-headline text-3xl font-bold text-on-surface">
+                Asked &amp; Answered
+              </h2>
+            </div>
+            <Link href="/answers" className="dateline !text-primary">
+              All answers →
+            </Link>
+          </div>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {topAnswers.map((a) => (
+              <AnswerCard key={a.id} answer={a} />
+            ))}
+          </div>
+        </section>
+      )}
 
       <TheWire />
       <AroundTheNeighborhood />

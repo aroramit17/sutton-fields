@@ -16,8 +16,7 @@ const nextConfig: NextConfig = {
       { source: "/live-here", destination: "/new-here", permanent: true },
       { source: "/community", destination: "/new-here", permanent: true },
       { source: "/connect", destination: "/directory", permanent: true },
-      // /get-help repoints to /answers when Phase 2 of the redesign ships.
-      { source: "/get-help", destination: "/new-here", permanent: true },
+      { source: "/get-help", destination: "/answers", permanent: true },
       { source: "/stay-informed", destination: "/news", permanent: true },
     ];
   },

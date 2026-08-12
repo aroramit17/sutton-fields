@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { expireStalePosts } from "@/lib/expire-posts";
 import { scanWilsonWeeklyInbox } from "@/lib/wilson-weekly";
 import { scanForLocalNews } from "@/lib/news-scan";
+import { checkStaleAnswers } from "@/lib/stale-answers";
 
 // The single scheduled entry in vercel.json — Vercel's Hobby plan caps the
 // number of distinct cron jobs, so every nightly task runs from here instead
@@ -38,6 +39,12 @@ export async function GET(request: NextRequest) {
     results.newsScan = await scanForLocalNews();
   } catch (err) {
     results.newsScan = { error: err instanceof Error ? err.message : "Unknown error" };
+  }
+
+  try {
+    results.staleAnswers = await checkStaleAnswers();
+  } catch (err) {
+    results.staleAnswers = { error: err instanceof Error ? err.message : "Unknown error" };
   }
 
   return NextResponse.json(results);
