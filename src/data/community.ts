@@ -66,22 +66,22 @@ export const schools: School[] = [
       "Prosper ISD's 17th elementary campus, opened in 2023 right inside Sutton Fields. Earned a B rating (80-89) from the Texas Education Agency. Serves 760+ students with state-of-the-art facilities.",
   },
   {
-    name: "William Rushing Middle School",
+    name: "Pete Moseley Middle School",
     type: "Middle",
     gradeRange: "6-8",
-    distance: "2.9 miles",
-    href: "https://www.prosper-isd.net/o/rums",
+    distance: "1.7 miles",
+    href: "https://www.prosper-isd.net/o/mms",
     description:
-      "Part of Prosper ISD, one of Niche.com's top-rated Texas school districts. Offers strong academics, STEM programs, and extracurricular activities.",
+      "Opened August 2025 at 1451 Teel Parkway. Sutton Fields' assigned middle school on Prosper ISD's approved 2026-27 attendance boundaries (adopted Nov 2025), replacing the pre-2025 Rushing MS assignment.",
   },
   {
-    name: "Prosper High School",
+    name: "Richland High School",
     type: "High",
     gradeRange: "9-12",
-    distance: "5.4 miles",
-    href: "https://www.prosper-isd.net/o/phs",
+    distance: "2.8 miles",
+    href: "https://www.prosper-isd.net/o/rhs",
     description:
-      "Home of the Eagles, offering advanced placement courses, championship athletics, and a wide range of extracurricular programs in Prosper ISD.",
+      "Prosper ISD's fourth high school, opened August 2025 at 3450 Prairie Drive. Sutton Fields' assigned high school on the district's approved boundary maps, replacing the pre-2025 Prosper High assignment.",
   },
 ];
 
