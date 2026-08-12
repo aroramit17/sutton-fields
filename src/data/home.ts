@@ -92,9 +92,8 @@ export const spotlight: SpotlightFeature = {
   description:
     "Opened in 2023, Dan Christie Elementary is Prosper ISD's 17th elementary campus — built right inside Sutton Fields. Serving grades PK-5 with 760+ students, it earned a B rating from the Texas Education Agency. Having a top-rated school within walking distance is one of the reasons families choose Sutton Fields.",
   image:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuDZapLTIWbKRGUTbd5GfCsphI-1CELOKoNSHwykq8gBSj0ziLivLXfQnyBfskDBI9Vv4LS86V045OaL2KJG5AyCJVOrqar6G9Q0mgFRGQ9UHNnQ_CkFkxUGIj-sYsRHK0bPGxRwt5szCmVzNtG5ZbnRqm-ENmTcXFDycLXsdafCYfWAs09or8Ep8oaGyjU8vW-zwbWqUaUAhOKhC0wagBrb59gyOwoYAMHrwOBlaraseumN5C8CzjYODoxBhhjqPenchGnny8OBtyw",
-  imageAlt:
-    "Modern elementary school building in the Sutton Fields community",
+    "https://tocjzsvda27mz4mw.public.blob.vercel-storage.com/home/dan-christie-elementary-1786552763355.png",
+  imageAlt: "Dan Christie Elementary School entrance in Prosper, Texas",
   stats: [
     { value: "2023", label: "Year Opened" },
     { value: "760+", label: "Students" },
