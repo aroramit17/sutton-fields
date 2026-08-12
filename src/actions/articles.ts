@@ -1,6 +1,6 @@
 "use server";
 
-import { desc, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { getDb } from "@/db";
 import { articles } from "@/db/schema";
 import { requireAdmin } from "@/lib/auth";
@@ -16,6 +16,34 @@ export async function getPublishedArticles(): Promise<Article[]> {
     .where(eq(articles.is_published, true))
     .orderBy(desc(articles.published_at));
   return rows.map(serializeArticle);
+}
+
+// The homepage lead story: the admin-pinned featured article, or the most
+// recently published one when nothing is pinned.
+export async function getFeaturedArticle(): Promise<Article | null> {
+  const db = getDb();
+  const [pinned] = await db
+    .select()
+    .from(articles)
+    .where(and(eq(articles.is_published, true), eq(articles.is_featured, true)))
+    .limit(1);
+  if (pinned) return serializeArticle(pinned);
+  const [latest] = await db
+    .select()
+    .from(articles)
+    .where(eq(articles.is_published, true))
+    .orderBy(desc(articles.published_at))
+    .limit(1);
+  return latest ? serializeArticle(latest) : null;
+}
+
+export async function setFeaturedArticle(articleId: string | null) {
+  await requireAdmin();
+  const db = getDb();
+  await db.update(articles).set({ is_featured: false }).where(eq(articles.is_featured, true));
+  if (articleId) {
+    await db.update(articles).set({ is_featured: true }).where(eq(articles.id, articleId));
+  }
 }
 
 export async function getAllArticlesForAdmin(): Promise<Article[]> {

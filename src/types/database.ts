@@ -17,6 +17,7 @@ export interface Article {
   source_title: string | null;
   image_url: string | null;
   category: string;
+  is_featured: boolean;
   is_published: boolean;
   published_at: string | null;
   created_at: string;
