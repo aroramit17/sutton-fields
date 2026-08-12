@@ -29,6 +29,27 @@ export async function getUpcomingEvents(): Promise<DbEvent[]> {
   return rows.map(serialize);
 }
 
+// Next school-related event (Wilson Weekly ingests come from the school
+// newsletter, so source is the proxy for "school"). Powers The Board chip.
+export async function getNextSchoolEvent(): Promise<DbEvent | null> {
+  const db = getDb();
+  const now = new Date();
+  const startOfToday = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+  const [row] = await db
+    .select()
+    .from(events)
+    .where(
+      and(
+        eq(events.is_published, true),
+        eq(events.source, "wilson_weekly"),
+        gte(events.event_date, startOfToday)
+      )
+    )
+    .orderBy(asc(events.event_date))
+    .limit(1);
+  return row ? serialize(row) : null;
+}
+
 export async function getAllEventsForAdmin(): Promise<DbEvent[]> {
   await requireAdmin();
   const db = getDb();
