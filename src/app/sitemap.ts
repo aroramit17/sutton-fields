@@ -7,26 +7,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "daily",
       priority: 1,
-    },
-    {
-      url: `${baseUrl}/community`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/vendors`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/events`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
     },
     {
       url: `${baseUrl}/news`,
@@ -35,10 +17,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/buy-sell-trade`,
+      url: `${baseUrl}/events`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/directory`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/classifieds`,
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/new-here`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
     },
   ];
 }

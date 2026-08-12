@@ -1,13 +1,13 @@
 "use client";
 
 import { useAuth } from "@/context/AuthContext";
-import { ListingForm } from "@/components/marketplace/ListingForm";
+import { LostFoundForm } from "@/components/lost-found/LostFoundForm";
 import { ContentGate } from "@/components/ui/ContentGate";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 
-export default function NewListingPage() {
+export default function NewLostFoundPage() {
   const { user, profile, loading } = useAuth();
 
   if (loading) {
@@ -24,7 +24,7 @@ export default function NewListingPage() {
       <div className="max-w-2xl mx-auto px-6 py-16">
         <ContentGate
           title="Sign In Required"
-          description="You need a verified Sutton Fields resident account to post items for sale."
+          description="You need a verified Sutton Fields resident account to post to Lost & Found."
         />
       </div>
     );
@@ -41,10 +41,10 @@ export default function NewListingPage() {
         </h1>
         <p className="text-on-surface-variant mb-8 max-w-md mx-auto">
           Your account is being verified by a Sutton Fields admin. You&rsquo;ll
-          be able to post listings once approved. Check back soon!
+          be able to post once approved. Check back soon!
         </p>
-        <Button variant="secondary" href="/buy-sell-trade">
-          Browse Listings
+        <Button variant="secondary" href="/classifieds?tab=lost-found">
+          Browse Lost & Found
         </Button>
       </div>
     );
@@ -53,21 +53,20 @@ export default function NewListingPage() {
   return (
     <div className="max-w-2xl mx-auto px-6 py-8">
       <Link
-        href="/buy-sell-trade"
+        href="/classifieds?tab=lost-found"
         className="inline-flex items-center gap-1 text-sm text-on-surface-variant hover:text-primary mb-6 transition-colors"
       >
-        <Icon name="arrow_back" className="text-sm" /> Back to Marketplace
+        <Icon name="arrow_back" className="text-sm" /> Back to Lost & Found
       </Link>
 
       <h1 className="text-4xl font-headline italic text-on-surface mb-2">
-        Post a Listing
+        Post to Lost & Found
       </h1>
       <p className="text-on-surface-variant mb-8">
-        Share something with your Sutton Fields neighbors. Your listing will be
-        active for 48 hours.
+        Help reunite a neighbor with their pet or item.
       </p>
 
-      <ListingForm />
+      <LostFoundForm />
     </div>
   );
 }

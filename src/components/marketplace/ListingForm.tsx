@@ -72,7 +72,7 @@ export function ListingForm() {
         images: imageUrls,
       });
 
-      router.push("/buy-sell-trade");
+      router.push("/classifieds");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to create listing");
       setSubmitting(false);

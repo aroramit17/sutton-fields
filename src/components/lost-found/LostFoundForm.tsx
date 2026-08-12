@@ -66,7 +66,7 @@ export function LostFoundForm() {
 
       await createLostFoundPost({ status, title, description, location, images: imageUrls });
 
-      router.push("/lost-found");
+      router.push("/classifieds?tab=lost-found");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to create post");
       setSubmitting(false);

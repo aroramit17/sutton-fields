@@ -1,13 +1,13 @@
 "use client";
 
 import { useAuth } from "@/context/AuthContext";
-import { CarpoolForm } from "@/components/carpool/CarpoolForm";
+import { ListingForm } from "@/components/marketplace/ListingForm";
 import { ContentGate } from "@/components/ui/ContentGate";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 
-export default function NewCarpoolPage() {
+export default function NewListingPage() {
   const { user, profile, loading } = useAuth();
 
   if (loading) {
@@ -24,7 +24,7 @@ export default function NewCarpoolPage() {
       <div className="max-w-2xl mx-auto px-6 py-16">
         <ContentGate
           title="Sign In Required"
-          description="You need a verified Sutton Fields resident account to post to the Carpool Board."
+          description="You need a verified Sutton Fields resident account to post items for sale."
         />
       </div>
     );
@@ -41,10 +41,10 @@ export default function NewCarpoolPage() {
         </h1>
         <p className="text-on-surface-variant mb-8 max-w-md mx-auto">
           Your account is being verified by a Sutton Fields admin. You&rsquo;ll
-          be able to post once approved. Check back soon!
+          be able to post listings once approved. Check back soon!
         </p>
-        <Button variant="secondary" href="/carpool">
-          Browse Carpool Board
+        <Button variant="secondary" href="/classifieds">
+          Browse Listings
         </Button>
       </div>
     );
@@ -53,20 +53,21 @@ export default function NewCarpoolPage() {
   return (
     <div className="max-w-2xl mx-auto px-6 py-8">
       <Link
-        href="/carpool"
+        href="/classifieds"
         className="inline-flex items-center gap-1 text-sm text-on-surface-variant hover:text-primary mb-6 transition-colors"
       >
-        <Icon name="arrow_back" className="text-sm" /> Back to Carpool Board
+        <Icon name="arrow_back" className="text-sm" /> Back to Marketplace
       </Link>
 
       <h1 className="text-4xl font-headline italic text-on-surface mb-2">
-        Post a Carpool Request
+        Post a Listing
       </h1>
       <p className="text-on-surface-variant mb-8">
-        Find a match for a school run or commute.
+        Share something with your Sutton Fields neighbors. Your listing will be
+        active for 48 hours.
       </p>
 
-      <CarpoolForm />
+      <ListingForm />
     </div>
   );
 }
