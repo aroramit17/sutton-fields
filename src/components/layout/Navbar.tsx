@@ -7,54 +7,101 @@ import { cn } from "@/lib/utils";
 import { navLinks } from "@/data/navigation";
 import { AuthButtons } from "./AuthButtons";
 import { Icon } from "@/components/ui/Icon";
+import { Dateline } from "@/components/ui/Dateline";
+
+const sectionUnderline: Record<string, { active: string; idle: string }> = {
+  news: {
+    active: "border-(--color-section-news)",
+    idle: "border-transparent hover:border-(--color-section-news)",
+  },
+  events: {
+    active: "border-(--color-section-events)",
+    idle: "border-transparent hover:border-(--color-section-events)",
+  },
+  answers: {
+    active: "border-(--color-section-answers)",
+    idle: "border-transparent hover:border-(--color-section-answers)",
+  },
+  directory: {
+    active: "border-(--color-section-directory)",
+    idle: "border-transparent hover:border-(--color-section-directory)",
+  },
+  classifieds: {
+    active: "border-(--color-section-classifieds)",
+    idle: "border-transparent hover:border-(--color-section-classifieds)",
+  },
+  default: {
+    active: "border-primary",
+    idle: "border-transparent hover:border-primary",
+  },
+};
 
 export function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const isHome = pathname === "/";
 
   return (
-    <nav className="w-full bg-background/80 backdrop-blur-md shadow-ambient">
-      <div className="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
-        <Link
-          href="/"
-          className="text-2xl font-headline italic text-primary"
-        >
-          Sutton Fields
-        </Link>
+    <nav className="w-full bg-background/95 backdrop-blur-md">
+      {/* Row 1: masthead */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-8">
+        <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 py-3 sm:py-4">
+          <div className="hidden sm:block">
+            <Dateline />
+          </div>
+          {/* Mobile menu button occupies the left slot on small screens */}
+          <button
+            className="sm:hidden justify-self-start text-on-surface-variant"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Menu"
+          >
+            <Icon name={mobileOpen ? "close" : "menu"} />
+          </button>
 
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-6">
+          <Link href="/" className="justify-self-center text-center">
+            <span className="block font-headline text-3xl font-bold uppercase leading-none tracking-tight text-on-surface sm:text-4xl">
+              Sutton Fields
+            </span>
+            {isHome && (
+              <span className="mt-1 hidden font-headline text-sm italic text-on-surface-variant sm:block">
+                The unofficial record of Sutton Fields — Celina, Texas
+              </span>
+            )}
+          </Link>
+
+          <div className="flex items-center justify-self-end gap-3">
+            <Link
+              href="/#dispatch"
+              className="hidden rounded-full bg-primary px-4 py-2 text-xs font-bold uppercase tracking-wider text-on-primary transition-colors hover:bg-primary-container sm:block"
+            >
+              Get the Dispatch
+            </Link>
+            <div className="hidden items-center gap-3 lg:flex">
+              <AuthButtons />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Row 2: section nav */}
+      <div className="hairline border-b border-b-outline-variant">
+        <div className="mx-auto hidden max-w-7xl items-center justify-center gap-8 px-8 lg:flex">
           {navLinks.map((link) => {
             const isActive =
-              !link.external &&
-              (link.href === "/"
+              link.href === "/"
                 ? pathname === "/"
-                : pathname.startsWith(link.href));
-
-            if (link.external) {
-              return (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-body text-sm tracking-wide text-on-surface-variant hover:text-primary-container transition-colors duration-300 flex items-center gap-1"
-                >
-                  {link.label}
-                  <Icon name="open_in_new" className="!text-xs" />
-                </a>
-              );
-            }
+                : pathname.startsWith(link.href);
+            const underline =
+              sectionUnderline[link.section ?? "default"] ??
+              sectionUnderline.default;
 
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "font-body text-sm tracking-wide transition-colors duration-300",
-                  isActive
-                    ? "text-primary font-semibold after:content-[''] after:block after:mx-auto after:w-1 after:h-1 after:bg-primary after:rounded-full"
-                    : "text-on-surface-variant hover:text-primary-container"
+                  "dateline border-b-2 py-2.5 !text-on-surface transition-colors",
+                  isActive ? underline.active : underline.idle
                 )}
               >
                 {link.label}
@@ -62,46 +109,17 @@ export function Navbar() {
             );
           })}
         </div>
-
-        <div className="hidden lg:flex items-center gap-4">
-          <AuthButtons />
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="lg:hidden text-on-surface-variant"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
-          <Icon name={mobileOpen ? "close" : "menu"} />
-        </button>
       </div>
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden bg-surface-container-lowest/95 backdrop-blur-md px-8 pb-6">
-          <div className="flex flex-col gap-4">
+        <div className="border-b border-outline-variant bg-surface-container-lowest/95 px-6 pb-6 backdrop-blur-md lg:hidden">
+          <div className="flex flex-col gap-1 pt-2">
             {navLinks.map((link) => {
               const isActive =
-                !link.external &&
-                (link.href === "/"
+                link.href === "/"
                   ? pathname === "/"
-                  : pathname.startsWith(link.href));
-
-              if (link.external) {
-                return (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setMobileOpen(false)}
-                    className="font-body text-sm py-2 text-on-surface-variant flex items-center gap-1"
-                  >
-                    {link.label}
-                    <Icon name="open_in_new" className="!text-xs" />
-                  </a>
-                );
-              }
+                  : pathname.startsWith(link.href);
 
               return (
                 <Link
@@ -109,17 +127,22 @@ export function Navbar() {
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className={cn(
-                    "font-body text-sm py-2 transition-colors",
-                    isActive
-                      ? "text-primary font-semibold"
-                      : "text-on-surface-variant"
+                    "dateline py-3 !text-base",
+                    isActive ? "!text-primary" : "!text-on-surface"
                   )}
                 >
                   {link.label}
                 </Link>
               );
             })}
-            <div className="flex items-center gap-4 pt-2">
+            <Link
+              href="/#dispatch"
+              onClick={() => setMobileOpen(false)}
+              className="mt-2 self-start rounded-full bg-primary px-4 py-2 text-xs font-bold uppercase tracking-wider text-on-primary"
+            >
+              Get the Dispatch
+            </Link>
+            <div className="flex items-center gap-4 pt-4">
               <AuthButtons />
             </div>
           </div>

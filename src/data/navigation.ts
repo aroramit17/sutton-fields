@@ -1,16 +1,17 @@
 import type { NavLink } from "@/types";
 
-export const navLinks: NavLink[] = [
-  { label: "Home", href: "/" },
-  { label: "Live Here", href: "/live-here" },
-  { label: "Get Help", href: "/get-help" },
-  { label: "Stay Informed", href: "/stay-informed" },
-  { label: "Events", href: "/events" },
-  { label: "Connect", href: "/connect" },
+// Section slugs map to --color-section-* tokens for the masthead underlines.
+// "Answers" joins this list when Phase 2 of the redesign ships.
+export const navLinks: (NavLink & { section?: string })[] = [
+  { label: "News", href: "/news", section: "news" },
+  { label: "Events", href: "/events", section: "events" },
+  { label: "Directory", href: "/directory", section: "directory" },
+  { label: "Classifieds", href: "/classifieds", section: "classifieds" },
+  { label: "New Here?", href: "/new-here" },
 ];
 
 export const footerLinks: NavLink[] = [
-  { label: "HOA Bylaws", href: "/community#documents" },
+  { label: "HOA Bylaws", href: "/new-here#documents" },
   { label: "Contact Committee", href: "https://suttonfieldshoa.com/contact-us.aspx" },
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Resident Portal", href: "https://suttonfieldshoa.com" },
