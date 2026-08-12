@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { TheBoard } from "@/components/home/TheBoard";
-import { LeadStory } from "@/components/home/LeadStory";
-import { TheWire } from "@/components/home/TheWire";
+import { FrontPage } from "@/components/home/FrontPage";
 import { AroundTheNeighborhood } from "@/components/home/AroundTheNeighborhood";
 import { DigestBand } from "@/components/home/DigestBand";
-import { WeekEventList } from "@/components/events/WeekEventList";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { FAQStructuredData } from "@/components/seo/StructuredData";
 import { getPublishedAnswers } from "@/actions/answers";
@@ -62,27 +60,7 @@ export default async function HomePage() {
     <>
       <FAQStructuredData faqs={homeFaqs} />
       <TheBoard />
-      <LeadStory />
-
-      {/* This Week */}
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-8">
-        <div className="hairline flex items-end justify-between pt-6">
-          <div>
-            <SectionLabel section="events" className="!mb-1">
-              This Week
-            </SectionLabel>
-            <h2 className="font-headline text-3xl font-bold text-on-surface">
-              What&apos;s Happening
-            </h2>
-          </div>
-          <Link href="/events" className="dateline !text-primary">
-            Full calendar →
-          </Link>
-        </div>
-        <div className="mt-6">
-          <WeekEventList limit={6} />
-        </div>
-      </section>
+      <FrontPage />
 
       {/* Answers */}
       {topAnswers.length > 0 && (
@@ -108,7 +86,6 @@ export default async function HomePage() {
         </section>
       )}
 
-      <TheWire />
       <AroundTheNeighborhood />
       <DigestBand />
     </>

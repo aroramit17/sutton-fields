@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { navLinks } from "@/data/navigation";
 import { AuthButtons } from "./AuthButtons";
 import { Icon } from "@/components/ui/Icon";
+import { Logo } from "@/components/ui/Logo";
 
 const sectionUnderline: Record<string, { active: string; idle: string }> = {
   news: {
@@ -56,8 +57,11 @@ export function Navbar() {
           </button>
 
           <Link href="/" className="justify-self-center text-center">
-            <span className="block font-headline text-3xl font-bold uppercase leading-none tracking-tight text-on-surface sm:text-4xl">
-              Sutton Fields
+            <span className="flex items-center justify-center gap-2.5 sm:gap-3">
+              <Logo className="size-8 shrink-0 sm:size-10" />
+              <span className="font-headline text-3xl font-bold uppercase leading-none tracking-tight text-on-surface sm:text-4xl">
+                Sutton Fields
+              </span>
             </span>
             {isHome && (
               <span className="mt-1 hidden font-headline text-sm italic text-on-surface-variant sm:block">
